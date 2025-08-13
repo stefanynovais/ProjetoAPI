@@ -1,14 +1,14 @@
 # **:feet: Sistema de Adoção - API REST com Node.js**
 ### 📌 Integrantes: 
-:tulip: Ana Júlia
+:cherry_blossom: Ana Júlia
 
-:tulip: Júlia
+:cherry_blossom: Júlia
 
-:tulip: Luana
+:cherry_blossom: Luana
 
-:tulip: Maria Júlia
+:cherry_blossom: Maria Júlia
 
-:tulip: Stefany 
+:cherry_blossom: Stefany 
  
-### 📌 Turma: 2DS MTEC
+### 📌 Turma: :octocat: 2DS MTEC
 

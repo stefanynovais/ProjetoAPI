@@ -2,11 +2,18 @@
   "name": "projetoapi",
   "version": "1.0.0",
   "description": "Projeto Final",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "start:dev": "nodemon ./",
     "start": "node ./",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Equipe Termo",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10",
+    "sequelize": "^6.37.7",
+    "sqlite3": "^5.1.7"
+  }
 }
