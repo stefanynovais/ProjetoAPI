@@ -1,0 +1,12 @@
+{
+  "name": "projetoapi",
+  "version": "1.0.0",
+  "description": "Projeto Final",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Equipe Termo",
+  "license": "ISC"
+}
