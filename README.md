@@ -10,5 +10,5 @@
 
 :cherry_blossom: Stefany 
  
-### 📌 Turma: 2DS MTEC
+### 📌 Turma: :octocat:2DS MTEC
 
