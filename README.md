@@ -2,7 +2,7 @@
 ### 📌 Integrantes: 
 :blossom: Ana Júlia
 
-:blossom: Júia
+:blossom: Júlia
 
 :blossom: Luana
 
