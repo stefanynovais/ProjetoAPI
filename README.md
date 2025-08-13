@@ -1,12 +1,12 @@
 # **:feet: Sistema de Adoção - API REST com Node.js**
 ### 📌 Integrantes: 
-:blossom: Ana Júlia
+:tulip: Ana Júlia
 
-:blossom: Júlia
+:tulip: Júlia
 
-:blossom: Luana
+:tulip: Luana
 
-:blossom: Maria Júlia
+:tulip: Maria Júlia
 
-:blossom: Stefany 
+:tulip: Stefany 
  
