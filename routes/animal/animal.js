@@ -1,4 +1,3 @@
-import bodyParser from 'body-parser';
 import express from 'express';
 import Animal from '../../models/Animal';
 
@@ -6,7 +5,7 @@ const Animais = async (app) => {
     await Animal.sync({force:true});
     const port = 300;
     const app = express();
-    app.use(bodyParser.json);
+    app.use(express.json());
 
     // Rotas
 
@@ -28,6 +27,11 @@ const Animais = async (app) => {
 
     app.get("/animais", async function (req,res){
         const animal = await Animal.findAll();
+        res.json(animal);
+    });
+
+    app.get("/animais/:id", async function(req,res){
+        const animal = await Animal.findByPK(req.params.id);
         res.json(animal);
     });
     

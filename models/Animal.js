@@ -1,4 +1,6 @@
 import { DataTypes } from 'sequelize';
+import sequelizeDatabase from '../database';
+
 
 export default (sequelize) => {
     return sequelize.define('Animal', {
