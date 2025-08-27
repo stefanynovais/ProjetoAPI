@@ -27,11 +27,20 @@ const Animais = async (app) => {
 
     app.get("/animais", async function (req,res){
         const animal = await Animal.findAll();
+
+        if(!animal) {
+            return res.status(500).json({"erro": "Erro ao buscar animais"})
+        }
+
         res.json(animal);
     });
 
     app.get("/animais/:id", async function(req,res){
         const animal = await Animal.findByPK(req.params.id);
+        if(!animal) {
+            return res.status(404).json({error:"Animal não encontrado"})
+        }
+
         res.json(animal);
     });
     
