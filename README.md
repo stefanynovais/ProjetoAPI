@@ -10,7 +10,7 @@
 
 :cherry_blossom: Stefany 
  
-### 📌 Turma: :octocat: 2DS MTEC
+## 📌 Turma: :octocat: 2DS MTEC
 
 ### 📌 Dependências:
 :tulip: npm 
