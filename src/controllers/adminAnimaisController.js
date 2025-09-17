@@ -45,3 +45,19 @@ export async function deletarAnimal(req, res) {
   }
 }
 
+export async function getAnimalPorID(req, res) {
+  try {
+    const { id } = req.params;
+
+    if (!id) return res.status(404).json({ erro: 'ID Inválido'})
+
+    const animal = await Animal.findByPk(id);
+
+      res.status(200).json(animal)
+
+  } catch (error) {
+    res.status(404).json({erro: "Animal não encontrado"});
+  }
+  
+}
+
