@@ -1,5 +1,5 @@
 import express from 'express';
-import { GetAnimais, PostAnimais, GetAnimaisByID } from '../../controllers/AnimaisController.js';
+import { GetAnimais, PostAnimais} from '../../controllers/AnimaisController.js';
 
 const routerAnimal = express.Router();
 
