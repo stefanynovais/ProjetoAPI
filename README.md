@@ -16,3 +16,7 @@
 :tulip: npm 
 
 :tulip: jsonwedtoken
+
+## 📌 Tecnologias:
+
+[![My Skills](https://skillicons.dev/icons?i=js,sqlite,nodejs,express)](https://skillicons.dev)
