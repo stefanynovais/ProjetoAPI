@@ -12,3 +12,6 @@
  
 ### 📌 Turma: :octocat: 2DS MTEC
 
+### 📌 Dependências:
+:tulip: npm 
+:tulip: jsonwedtoken
