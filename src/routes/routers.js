@@ -1,30 +1,24 @@
 import express from 'express';
-import Animais from './animal/animal';
+import Animais from './animal/animal.js';
 import adminAnimaisRoutes from './admin/animais.js';
 import authRoutes from './auth.js';
 import animalRoutes from '../routes/animal/animal.js';
+import router from './animal/animal.js';
 
-const Routers = async () => {
-    const port = 3000;
-    const app = express();
-
-    app.use(express.json());
+const router = express.Router();
+   
 
     // Login
-    app.use(authRoutes);
+    router.use(authRoutes);
 
     // Rotas admin
-    app.use(adminAnimaisRoutes);
+    router.use(adminAnimaisRoutes);
 
     // Rotas animal
-    app.use(animalRoutes)
+    router.use(animalRoutes);
 
     // Rotas gerais
-    await Animais(app);
+    Animais(router);
 
-    app.listen(port, () => {
-        console.log(`Aplicação rodando na porta ${port}`)
-    });
-}
 
-export default Routers;
+export default router;

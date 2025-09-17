@@ -1,13 +1,22 @@
-const express  = require('express');
-const app = express();
-const port = 3000;
+import express from 'express';
+import { connectDatabase } from './database/database.js';
+import router from './routes/routers.js';
+import tutorRoutes from './routes/tutor/tutor.js';
+import authRoutes from './routes/tutor/authLogin.js';
 
-app.use(express.json());
+const app = express(); //criando a aplicação do nosso app
+const port = 3000; //porta em que o servidor vai rodar
 
-app.get('/', (req,res) =>{
-    res.send('Bem-vindo à minha API!');
-});
+app.use(express.json()); //dizendo ao Express para interpretar JSON no corpo das requisições
 
-app.listen(port, () =>{
-    console.log(`Servidor rodando em http:/localhost:${port}`);
-});
+// Conecta ao banco de dados
+await connectDatabase();
+
+// Rotas
+app.use('/tutores', tutorRoutes);
+app.use('/', routes); // importa todas as outras rotas
+
+// Rota teste para ver se o servidor está funcionando
+app.get('/', (req,res) => res.send('Bem-vindo à API de Adoção!'));
+
+app.listen(port, () => console.log(`Servidor rodando em http://localhost:${port}`));

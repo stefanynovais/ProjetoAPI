@@ -1,5 +1,5 @@
 import express from 'express';
-import Usuario from '../../models/Usuario';
+import Usuario from '../../models/Usuario.js';
 
 const Tutores = async (app) => {
     await Usuario.sync({ force: true });
