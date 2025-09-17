@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { sequelize } from '../database/database.js';
 import UsuarioModel from '../models/Usuario.js';
-import { connectDatabase } from '../database/database.js';
 
 const Usuario = UsuarioModel(sequelize); 
 
