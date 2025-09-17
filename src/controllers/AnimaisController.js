@@ -32,7 +32,8 @@ export async function PostAnimais(req,res) {
 
 export async function GetAnimais(req,res) {
     try {
-        const animal = await Animal.findAll(); // ainda vou fazer o filtro
+        const animal = await Animal.findAll(); // ainda vou fazer o filtro 
+                                               // data[], ordenar por padrão do mais antigo para o mais recente
 
         res.status(200).json(animal);
         

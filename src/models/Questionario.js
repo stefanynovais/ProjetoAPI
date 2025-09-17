@@ -1,5 +1,4 @@
 import { DataTypes } from 'sequelize';
-import { sequelize, connectDatabase } from '../database/database.js';
 
 export default (sequelize) => {
     const Questionario = sequelize.define('Questionario', {
