@@ -3,9 +3,9 @@ import {PedidoAdocao, Animal, Tutor, Questionario} from "../../models/index.js";
 import { where } from "sequelize";
 import { status } from "express/lib/response";
 
-const router = Router();
+const routerAdocao = Router();
 
-router.post("/adocao", async (req, res) => {
+routerAdocao.post("/adocao", async (req, res) => {
     const {tutorId, animalId } = req.body;
 
     try{
@@ -16,16 +16,20 @@ router.post("/adocao", async (req, res) => {
             return res.status(404).json({error: "Tutor não encontrado"});
         }
 
-        const pedidoExistente = await PedidoAdocao.findOne({
-            where: {tutorId, animalId}
-        });
-        if(pedidoExistente){
-            return res.status(400).json({error: "Este tutor já tem um pedido de adoção para este animal"});
+        const questionario = await Questionario.findOne({ where: {tutorId: tutor.id}});
+
+        if (!questionario) {
+            return res.status(400).json({ error: "O tutor não possui um questionário preenchido" });
+            
         }
 
-        const pedidoExistenteAnimal = await PedidoAdocao.count({
-            where: {animalId}
-        });
+        const pedidoExistente = await PedidoAdocao.findOne({where: {tutorId, animalId}});
+
+        if(pedidoExistente){
+            return res.status(409).json({error: "Este tutor já tem um pedido de adoção para este animal"});
+        }
+
+        const pedidoExistenteAnimal = await PedidoAdocao.count({where: {animalId}});
 
         const posicaoFila = pedidoExistenteAnimal + 1;
 
@@ -50,4 +54,4 @@ router.post("/adocao", async (req, res) => {
     }
 });
 
-export default router;
+export default routerAdocao;
