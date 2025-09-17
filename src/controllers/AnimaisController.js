@@ -42,20 +42,3 @@ export async function GetAnimais(req,res) {
     }
 }
 
-export async function GetAnimaisByID(req,res){
-    try {
-        const {id} = req.params
-
-         if(!id){
-            res.status(404).json("Id inválido!");
-         }
-
-         const animal = await Animal.findByPk(id);
-
-         res.status(200).json(animal)
-
-    } catch (error) {
-        res.status(404).json({"erro": "Animal não encontrado"});
-    }
-
-}

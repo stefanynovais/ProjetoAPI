@@ -5,7 +5,6 @@ const routerAnimal = express.Router();
 
 routerAnimal.post('/animais', PostAnimais);
 routerAnimal.get('/animais', GetAnimais);
-routerAnimal.get('/animais/:id', GetAnimaisByID);
 
 export default routerAnimal;
 
