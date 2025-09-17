@@ -1,7 +1,7 @@
 import AnimalModel from '../models/Animal.js';
-import sequelize from '../database/database.js';
+import { connectDatabase } from '../database/database.js';
 
-const Animal = AnimalModel(sequelize);
+const Animal = AnimalModel(connectDatabase);
 
 export async function listarAnimais(req, res) {
   try {
@@ -44,3 +44,4 @@ export async function deletarAnimal(req, res) {
     res.status(500).json({ erro: 'Erro ao deletar animal' });
   }
 }
+

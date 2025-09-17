@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize';
 
+
 export default (sequelize) => {
     const Usuario = sequelize.define('usuario', {
         id: {

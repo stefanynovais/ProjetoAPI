@@ -1,7 +1,7 @@
 import AnimalModel from '../models/Animal.js';
-import {sequelize} from '../database/database.js'
+import { connectDatabase } from '../database/database.js';
 
-const Animal = AnimalModel(sequelize);
+const Animal = AnimalModel(connectDatabase);
 
 export async function PostAnimais(req,res) {
 

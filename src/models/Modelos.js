@@ -1,4 +1,4 @@
-import { Sequelize } from 'sequelize';
+import { sequelize, connectDatabase } from '../database/database.js';
 import AnimalModel from './Animal.js';
 import TutorModel from './Tutor.js';
 import QuestionarioModel from './Questionario.js';
