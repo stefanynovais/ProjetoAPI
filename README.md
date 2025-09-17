@@ -1,4 +1,4 @@
-# **:feet: Sistema de Adoção - API REST com Node.js**
+# **🐾 : Sistema de Adoção - API REST com Node.js : 🐾**
 ## 📌 Integrantes: 
 :cherry_blossom: Ana Júlia
 
