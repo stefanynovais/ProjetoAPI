@@ -14,7 +14,7 @@ await connectDatabase();
 
 // Rotas
 app.use('/tutores', tutorRoutes);
-app.use('/', routes); // importa todas as outras rotas
+app.use('/', router); // importa todas as outras rotas
 
 // Rota teste para ver se o servidor está funcionando
 app.get('/', (req,res) => res.send('Bem-vindo à API de Adoção!'));

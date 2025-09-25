@@ -1,5 +1,5 @@
-# **:feet: Sistema de Adoção - API REST com Node.js**
-### 📌 Integrantes: 
+# **🐾 : Sistema de Adoção - API REST com Node.js : 🐾**
+## 📌 Integrantes: 
 :cherry_blossom: Ana Júlia
 
 :cherry_blossom: Júlia
@@ -10,5 +10,13 @@
 
 :cherry_blossom: Stefany 
  
-### 📌 Turma: :octocat: 2DS MTEC
+### 🐈‍⬛ Turma: :octocat: 2DS MTEC
 
+## 📌 Dependências:
+:tulip: npm 
+
+:tulip: jsonwedtoken
+
+## 📌 Tecnologias:
+
+[![My Skills](https://skillicons.dev/icons?i=js,sqlite,nodejs,express)](https://skillicons.dev)

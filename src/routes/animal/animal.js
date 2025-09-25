@@ -1,11 +1,10 @@
 import express from 'express';
-import { GetAnimais, PostAnimais, GetAnimaisByID } from '../../controllers/AnimaisController.js';
+import { GetAnimais, PostAnimais} from '../../controllers/AnimaisController.js';
 
-const router = express.Router();
+const routerAnimal = express.Router();
 
-router.post('/animais', PostAnimais);
-router.get('/animais', GetAnimais);
-router.get('/animais/:id', GetAnimaisByID);
+routerAnimal.post('/animais', PostAnimais);
+routerAnimal.get('/animais', GetAnimais);
 
-export default router;
+export default routerAnimal;
 

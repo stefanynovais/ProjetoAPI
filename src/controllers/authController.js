@@ -1,9 +1,9 @@
 import jwt from 'jsonwebtoken';
 import encrypt from 'encryptjs';
 import UsuarioModel from '../models/Usuario.js';
-import sequelize from '../database/database.js';
+import { connectDatabase } from '../database/database.js';
 
-const Usuario = UsuarioModel(sequelize);
+const Usuario = UsuarioModel(connectDatabase);
 
 export async function login(req, res) {
   const { email, senha } = req.body;

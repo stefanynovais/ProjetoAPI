@@ -1,7 +1,7 @@
 import AnimalModel from '../models/Animal.js';
-import {sequelize} from '../database/database.js'
+import { connectDatabase } from '../database/database.js';
 
-const Animal = AnimalModel(sequelize);
+const Animal = AnimalModel(connectDatabase);
 
 export async function PostAnimais(req,res) {
 
@@ -32,7 +32,8 @@ export async function PostAnimais(req,res) {
 
 export async function GetAnimais(req,res) {
     try {
-        const animal = await Animal.findAll(); // ainda vou fazer o filtro
+        const animal = await Animal.findAll(); // ainda vou fazer o filtro 
+                                               // data[], ordenar por padrão do mais antigo para o mais recente
 
         res.status(200).json(animal);
         
@@ -42,20 +43,3 @@ export async function GetAnimais(req,res) {
     }
 }
 
-export async function GetAnimaisByID(req,res){
-    try {
-        const {id} = req.params
-
-         if(!id){
-            res.status(404).json("Id inválido!");
-         }
-
-         const animal = await Animal.findByPk(id);
-
-         res.status(200).json(animal)
-
-    } catch (error) {
-        res.status(404).json({"erro": "Animal não encontrado"});
-    }
-
-}

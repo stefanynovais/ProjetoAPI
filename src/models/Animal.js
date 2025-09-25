@@ -1,8 +1,7 @@
 import { DataTypes } from 'sequelize';
-import sequelizeDatabase from '../database';
+import { sequelize } from '../database/database.js';
 
-
-export default (sequelize) => {
+export default (connectDatabase) => {
     return sequelize.define('Animal', {
         id: {
             type: DataTypes.UUID,
