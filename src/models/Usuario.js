@@ -1,4 +1,5 @@
 import { DataTypes } from 'sequelize';
+import bcrypt from 'bcrypt';
 
 export default (sequelize) => {
     const Usuario = sequelize.define('usuario', {
@@ -15,7 +16,10 @@ export default (sequelize) => {
         email: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true
+            unique: true,
+            validate: {
+                isEmail: { msg: 'Email inválido' }
+            }
         },
         senha: {
             type: DataTypes.STRING,
@@ -72,8 +76,24 @@ export default (sequelize) => {
             defaultValue: false
         }
     }, {
-        tableName: 'Usuario',
-        timestamps: true
+        tableName: 'Usuario', //força o nome da tabela para "Usuario" no banco de dados
+        timestamps: true //cria automaticamente os campos createdAt e updatedAt para registrar quando o registro foi criado ou atualizado.
+    });
+
+
+    //hook é uma função que o Sequelize executa automaticamente antes ou depois de uma ação no banco de dados
+    //hook antes de criar um usuário, a senha é automaticamente transformada em hash
+    Usuario.beforeCreate(async (usuario) => {
+        if (usuario.senha) {
+            usuario.senha = await bcrypt.hash(usuario.senha, 10); //hash seguro da senha com 10 salt rounds
+        }
+    });
+
+    //hook que para se a senha for alterada, ela também é hasheada automaticamente
+    Usuario.beforeUpdate(async (usuario) => {
+        if (usuario.changed('senha')) {
+            usuario.senha = await bcrypt.hash(usuario.senha, 10); //hash seguro da senha com 10 salt rounds
+        }
     });
 
     return Usuario;
