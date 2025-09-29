@@ -13,7 +13,7 @@ app.use(express.json()); //dizendo ao Express para interpretar JSON no corpo das
 await connectDatabase();
 
 // Rotas
-app.use('/tutores', tutorRoutes);
+app.use(tutorRoutes);
 app.use('/', router); // importa todas as outras rotas
 
 // Rota teste para ver se o servidor está funcionando
