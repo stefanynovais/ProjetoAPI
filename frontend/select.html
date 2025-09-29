@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <title>Bentão Connect</title>
+</head>
+
+<body class="pagina-connect">
+    <div class="container" id="container">
+
+
+        <div class="right-panel">
+            <h2>SELECIONE 3</h2>
+            <ul id="lista-interesses">
+                <li onclick="alternarSelecao(this)">Séries da Netflix</li>
+                <li onclick="alternarSelecao(this)">Música pop</li>
+                <li onclick="alternarSelecao(this)">Filmes de super-herói</li>
+                <li onclick="alternarSelecao(this)">Jogos online</li>
+                <li onclick="alternarSelecao(this)">Podcasts de crimes reais</li>
+                <li onclick="alternarSelecao(this)">Rap/trap nacional</li>
+                <li onclick="alternarSelecao(this)">Memes e cultura da internet</li>
+                <li onclick="alternarSelecao(this)">Moda streetwear</li>
+                <li onclick="alternarSelecao(this)">Treinos e vida fitness</li>
+                <li onclick="alternarSelecao(this)">Cultura geek</li>
+            </ul>
+            <button onclick="enviarInteresses()" class="btn-primary" style="margin-top: 20px;">
+                Confirmar Interesses
+              </button>
+        </div>
+    </div>
+    <script src="dinamico.js"></script>
+
+</body>
+
+</html>

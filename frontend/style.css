@@ -1,0 +1,276 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #dde6f0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 900px;
+    height: 500px;
+    background: linear-gradient(to right, #4a00e0, #8e2de2);
+    border-radius: 10px;
+    display: flex;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Painel esquerdo (Login) */
+.left-panel,
+.right-panel {
+    width: 50%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #e7f0fb;
+}
+
+.left-panel {
+    background: transparent;
+    color: #fff;
+    text-align: center;
+}
+
+.left-panel h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.left-panel button {
+    padding: 12px 30px;
+    background: linear-gradient(to right, #4a00e0, #8e2de2);
+    border: none;
+    color: white;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+
+.left-panel button:hover {
+    transform: scale(1.05);
+}
+
+/* Painel direito (Cadastro) */
+.right-panel h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #4a00e0;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.social-icons a {
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    transition: transform 0.2s;
+}
+
+.social-icons a:hover {
+    transform: scale(1.1);
+}
+
+.social-icons img {
+    width: 20px;
+    height: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+}
+
+form input {
+    padding: 12px;
+    border-radius: 30px;
+    border: none;
+    margin: 8px 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) inset;
+    outline: none;
+}
+
+.btn-primary {
+    margin-top: 16px;
+    background: linear-gradient(to right, #4a00e0, #8e2de2);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+    font-size: 14px;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+/* Estilizando para a página connect, já que nela se tem apenas 1 container */
+.pagina-connect {
+    background: linear-gradient(120deg, #eaf6ff 50%, #573bff 50%);
+}
+
+.pagina-connect .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    border-radius: 16px;
+    background: none !important;
+    box-shadow: none !important;
+}
+
+/*.pagina-connect .left-panel {
+    background: linear-gradient(to right, #4a00e0, #8e2de2);
+    color: white;
+}*/
+
+.pagina-connect .btn-primary {
+    margin-top: 16px;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+    font-size: 14px;
+}
+
+.pagina-connect .right-panel {
+    background-color: #e7f0fb;
+    border-radius: 12%;
+}
+
+.pagina-connect .form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+}
+
+.selecao-interesses {
+    background: linear-gradient(to bottom, #e7f0fb, #f8fbff);
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.2);
+    width: 320px;
+    text-align: center;
+}
+
+.selecao-interesses h2 {
+    color: #4a00e0;
+    margin-bottom: 20px;
+}
+
+#lista-interesses {
+    list-style: none;
+    padding: 0;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#lista-interesses li {
+    padding: 10px 15px;
+    margin: 8px 0;
+    background-color: white;
+    border-radius: 20px;
+    color: #4a00e0;
+    cursor: pointer;
+    transition: background 0.2s;
+    border: 2px solid transparent;
+}
+
+#lista-interesses li.selecionado {
+    background-color: #4a00e0;
+    color: white;
+    border: 2px solid #8e2de2;
+}
+
+#lista-interesses li:hover {
+    background-color: #c8d8ec;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(to right, #5f2c82, #a044ff);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .logo {
+    height: 45px;
+    width: 45px;
+    border-radius: 10px;
+    background-color: white;
+    padding: 5px;
+  }
+  
+  .titulo {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .titulo .destaque {
+    background-color: #007bff;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 5px;
+    margin-left: 5px;
+  }
+  
+  .conteudo {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+  }
+  
+  .caixa-pesquisa input {
+    padding: 15px 20px;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    width: 600px;
+    font-size: 16px;
+    background-color: #f2f2f2;
+    color: #333;
+  }
+  
+  .caixa-pesquisa input::placeholder {
+    color: #888;
+  }

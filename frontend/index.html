@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css" />
+  <title>Bentão Connect</title>
+</head>
+
+<body class="pagina-index">
+  <div class="container" id="container">
+    <!-- Lado Esquerdo (Login/Texto) -->
+    <div class="left-panel">
+      <h1>CONNECT BENTÃO</h1>
+      <a href="login.html">
+        <button id="goToLogin">Login</button>
+      </a>
+    </div>
+
+    <!-- Lado Direito (Formulário de cadastro) -->
+    <div class="right-panel">
+      <h2>CRIAR CONTA</h2>
+
+      <div class="social-icons">
+        <a href="#"><img src="./assets/icons/facebook.png" alt="Facebook" /></a>
+        <a href="#"><img src="./assets/icons/google.png" alt="Google" /></a>
+        <a href="#"><img src="./assets/icons/github.png" alt="GitHub" /></a>
+      </div>
+
+      <form action="connect.html" method="GET">
+        <input type="text" placeholder="Nome" name="nome" />
+        <input type="email" placeholder="E-mail" name="email" />
+        <input type="password" placeholder="Senha" name="senha" />
+        <button type="submit" class="btn-primary">CRIAR</button>
+      </form>
+    </div>
+  </div>
+  <script src="dinamico.js"></script>
+</body>
+
+</html>
