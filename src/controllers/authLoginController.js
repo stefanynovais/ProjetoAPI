@@ -15,11 +15,16 @@ export const login = async (req, res) => {
     // Pega email e senha enviados pelo usuário
     const { email, senha } = req.body;
 
+<<<<<<< HEAD
     // Validação simples: se algum campo não foi enviado
+=======
+    //validação simples
+>>>>>>> a25284333f98b9e948a5f5d7c292ddd0ca283392
     if (!email || !senha) {
       return res.status(400).json({ error: "Email e senha obrigatórios" });
     }
 
+<<<<<<< HEAD
     // Busca o usuário no banco pelo email
     const tutor = await Usuario.findOne({ where: { email } });
 
@@ -46,6 +51,18 @@ export const login = async (req, res) => {
     // Retorna sucesso com token
     res.status(200).json({ message: "Login bem-sucedido", token });
 
+=======
+    //procura o usuário no banco
+    const tutor = await Usuario.findOne({ where: { email } });
+
+    //verifica se existe e se a senha bate
+    if (!tutor || tutor.senha !== senha) {
+      return res.status(401).json({ error: "Email ou senha inválidos" });
+    }
+
+    //sucesso
+    res.status(200).json({ message: "Login bem-sucedido", tutorId: tutor.id });
+>>>>>>> a25284333f98b9e948a5f5d7c292ddd0ca283392
   } catch (error) {
     // Se der algum erro, retorna 500
     console.error(error);

@@ -7,6 +7,7 @@ export async function PostAnimais(req,res) {
 
     try {
         const [nome, especie, porte, castrado, vacinado, descricao, foto] = req.body; // ainda vou add a questão do buffer
+        const fotoBuffer = req.file?.buffer; // pega o buffer da imagem
 
         if( !nome || !especie || !porte || !castrado || !vacinado || !descricao || !foto) {
             res.status(400).json({"erro": "Todos os campos obrigatórios devem ser preenchidos corretamente."});
@@ -19,7 +20,7 @@ export async function PostAnimais(req,res) {
             castrado, 
             vacinado, 
             descricao, 
-            foto
+            foto: fotoBuffer, // salva o buffer no campo 'foto'
         });
 
         res.status(201).json("Animal cadastro com sucesso!", novoAnimal);

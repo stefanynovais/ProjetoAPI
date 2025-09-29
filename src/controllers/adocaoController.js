@@ -1,11 +1,12 @@
-import { Router } from "express";
-import {PedidoAdocao, Animal, Tutor, Questionario} from "../../models/index.js";
-import { where } from "sequelize";
-import { status } from "express/lib/response";
+import {PedidoAdocao, Animal, Tutor, Questionario} from "../models";
+import { connectDatabase } from '../database/database.js';
 
-const routerAdocao = Router();
+const Animal = AnimalModel(connectDatabase);
+const Tutor = TutorModel(connectDatabase);
+const PedidoAdocao = PedidoAdocao(connectDatabase);
+const Questionario = Questionario(connectDatabase);
 
-routerAdocao.post("/adocao", async (req, res) => {
+export async function PostAdocao(req,res) {
     const {tutorId, animalId } = req.body;
 
     try{
@@ -52,6 +53,5 @@ routerAdocao.post("/adocao", async (req, res) => {
         console.error(error);
         return res.status(500).json({error: "Erro ao registrar o pedido de adoção"});
     }
-});
+}
 
-export default routerAdocao;
