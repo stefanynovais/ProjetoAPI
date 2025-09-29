@@ -2,7 +2,7 @@ import express from 'express';
 import routerAdm  from '../routes/admin/animais.js';
 import authRoutes from '../routes/tutor/authLogin.js';
 import routerAnimal from '../routes/animal/animal.js';
-import routerAdocao from '../routers/adocao/adocaoRoutes.js';
+import routerAdocao from '../routes/adocao/adocaoRoutes.js';
 
 const router = express.Router();
 

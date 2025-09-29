@@ -3,8 +3,8 @@ import { connectDatabase } from '../database/database.js';
 
 const Animal = AnimalModel(connectDatabase);
 const Tutor = TutorModel(connectDatabase);
-const PedidoAdocao = PedidoAdocaoModel(connectDatabase);
-const Questionario = QuestionarioModel(connectDatabase);
+const PedidoAdocao = PedidoAdocao(connectDatabase);
+const Questionario = Questionario(connectDatabase);
 
 export async function PostAdocao(req,res) {
     const {tutorId, animalId } = req.body;
