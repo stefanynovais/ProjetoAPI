@@ -18,7 +18,7 @@ export const login = async (req, res) => {
 <<<<<<< HEAD
     // Validação simples: se algum campo não foi enviado
 =======
-    //validação simples
+    
 >>>>>>> a25284333f98b9e948a5f5d7c292ddd0ca283392
     if (!email || !senha) {
       return res.status(400).json({ error: "Email e senha obrigatórios" });

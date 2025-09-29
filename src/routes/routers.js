@@ -3,6 +3,7 @@ import routerAdm  from '../routes/admin/animais.js';
 import authRoutes from '../routes/tutor/authLogin.js';
 import routerAnimal from '../routes/animal/animal.js';
 import routerAdocao from '../routes/adocao/adocaoRoutes.js';
+import routerQuestionario from '../routes/tutor/questionario.js';
 
 const router = express.Router();
 
@@ -18,4 +19,7 @@ const router = express.Router();
     // Rota adoção
     router.use(routerAdocao);
 
+    //Rota questionario
+    router.use(routerQuestionario);
+    
 export default router;
