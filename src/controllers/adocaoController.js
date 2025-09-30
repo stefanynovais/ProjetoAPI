@@ -1,4 +1,3 @@
-import {PedidoAdocao, Animal, Tutor, Questionario} from "../models";
 import { connectDatabase } from '../database/database.js';
 
 const Animal = AnimalModel(connectDatabase);

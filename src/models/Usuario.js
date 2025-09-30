@@ -1,3 +1,4 @@
+import Questionario from '../models/Questionario.js';
 import { DataTypes } from 'sequelize';
 import bcrypt from 'bcrypt';
 

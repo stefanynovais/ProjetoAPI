@@ -187,6 +187,7 @@ export default (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         }
+        
     }, {
         tableName: 'questionarios',
         timestamps: true
