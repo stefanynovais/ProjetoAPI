@@ -13,9 +13,15 @@
 ### 🐈‍⬛ Turma: :octocat: 2DS MTEC
 
 ## 📌 Dependências:
-:tulip: npm 
+:tulip: npm i
 
-:tulip: jsonwedtoken
+:tulip: jsonwebtoken
+
+:tulip: sqlite3
+
+:tulip: express
+
+:tulip: multer
 
 ## 📌 Tecnologias:
 
