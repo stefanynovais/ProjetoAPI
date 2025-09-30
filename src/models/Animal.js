@@ -1,6 +1,7 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../database/database.js';
 
+
 export default (connectDatabase) => {
     return sequelize.define('Animal', {
         id: {

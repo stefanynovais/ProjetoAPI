@@ -18,4 +18,4 @@ export const connectDatabase = async () => {
   }
 };
 
-//export default { sequelize, connectDatabase } ; exportando a instância de dados
+//export default { sequelize, connectDatabase } ; //exportando a instância de dados
