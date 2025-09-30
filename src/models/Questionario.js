@@ -1,6 +1,7 @@
 import { DataTypes } from 'sequelize';
+import { sequelize } from '../database/database.js';
 
-export default (sequelize) => {
+export default (connectDatabase) => {
     const Questionario = sequelize.define('Questionario', {
         id: {
             type: DataTypes.UUID,
@@ -187,6 +188,7 @@ export default (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         }
+        
     }, {
         tableName: 'questionarios',
         timestamps: true

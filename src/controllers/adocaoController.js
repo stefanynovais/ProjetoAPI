@@ -1,10 +1,14 @@
-import {PedidoAdocao, Animal, Tutor, Questionario} from "../models";
 import { connectDatabase } from '../database/database.js';
+import  createAnimalModel from '../models/Animal.js';
+import  createTutorModel from '../models/Usuario.js'
+import  createPedidoAdocaoModel from '../models/PedidoAdocao.js'
+import  createQuestionarioModel from '../models/Questionario.js'
 
-const Animal = AnimalModel(connectDatabase);
-const Tutor = TutorModel(connectDatabase);
-const PedidoAdocao = PedidoAdocao(connectDatabase);
-const Questionario = Questionario(connectDatabase);
+
+const Animal = createAnimalModel(connectDatabase);
+const Tutor = createTutorModel(connectDatabase);
+const PedidoAdocao = createPedidoAdocaoModel(connectDatabase);
+const Questionario = createQuestionarioModel(connectDatabase);
 
 export async function PostAdocao(req,res) {
     const {tutorId, animalId } = req.body;
