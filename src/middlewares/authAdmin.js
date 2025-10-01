@@ -1,8 +1,7 @@
 import jwt from 'jsonwebtoken';
-import { sequelize } from '../database/database.js';
-import UsuarioModel from '../models/Usuario.js';
+import  {sequelize}  from '../database/database.js';
+import Usuario from '../models/Usuario.js';
 
-const Usuario = UsuarioModel(sequelize); 
 
 export default async function authAdmin(req, res, next) {
   const token = req.headers['authorization']?.split(' ')[1];

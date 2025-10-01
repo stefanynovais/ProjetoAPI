@@ -1,5 +1,5 @@
 import express from 'express';
-import { connectDatabase } from './database/database.js';
+import {sequelize, connectDatabase} from './database/database.js';
 import router from './routes/routers.js';
 import tutorRoutes from './routes/tutor/tutor.js';
 import authRoutes from './routes/tutor/authLogin.js';

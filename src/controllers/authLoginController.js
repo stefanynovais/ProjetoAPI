@@ -5,13 +5,10 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 //importa o model do usuário
-import UsuarioModel from '../models/Usuario.js';
+import Usuario from '../models/Usuario.js';
 
 //importa a função de conexão com o banco
-import { sequelize } from '../database/database.js';
-
-//instancia o model corretamente com o Sequelize
-const Usuario = UsuarioModel(sequelize);
+import  {sequelize}  from '../database/database.js';
 
 export const login = async (req, res) => {
   try {

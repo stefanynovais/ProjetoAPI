@@ -1,9 +1,8 @@
-import Questionario from '../models/Questionario.js';
+
 import { DataTypes } from 'sequelize';
 import bcrypt from 'bcrypt';
-import { sequelize } from '../database/database.js';
+import {sequelize} from '../database/database.js';
 
-export default (connectDatabase) => {
     const Usuario = sequelize.define('usuario', {
         id: {
             type: DataTypes.UUID,
@@ -97,5 +96,5 @@ export default (connectDatabase) => {
         }
     });
 
-    return Usuario;
-};
+    export default Usuario; 
+
