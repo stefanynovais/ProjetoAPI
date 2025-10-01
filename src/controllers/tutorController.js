@@ -3,7 +3,7 @@ import Questionario from "../models/Questionario.js";
 
 const camposObrigatorios = [
     'nome_completo', 'email', 'senha', 'cidade',
-    'estado', 'idade', 'cpf', 'endereco', 'bairro', 'cep'
+    'estado', 'idade', 'cpf', 'endereco', 'bairro', 'cep', 'telefone'
 ];
 
 export const criarTutor = async (req, res) => {
@@ -28,6 +28,7 @@ export const criarTutor = async (req, res) => {
         return res.status(201).json(tutor);
 
     } catch (error) {
+        console.error("Erro ao criar tutor:", error); // <-- Adicione isso!
         return res.status(500).json({ error: "Erro interno ao cadastrar o tutor" });
     }
 };
