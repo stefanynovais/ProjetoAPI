@@ -1,6 +1,6 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../database/database.js';
-
+import Usuario from '../models/Usuario.js';
 export default (connectDatabase) => {
     const PedidoAdocao = sequelize.define('PedidoAdocao', {
         id: {
@@ -20,11 +20,19 @@ export default (connectDatabase) => {
         },
         tutorId: {
             type: DataTypes.UUID,
-            allowNull: false
+            allowNull: false,
+            references: {
+                model: 'usuarios',
+                key: 'id',
+            },
         },
         animalId: {
             type: DataTypes.UUID,
-            allowNull: false
+            allowNull: false,
+            references: {
+                model: 'animais',
+                key: 'id',
+            },
         }
     }, {
         tableName: 'pedidos_adocao',
