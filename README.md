@@ -21,7 +21,6 @@
 
 :tulip: express
 
-:tulip: multer
 
 ## 📌 Tecnologias:
 
