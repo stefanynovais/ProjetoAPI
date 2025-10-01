@@ -20,6 +20,11 @@ export async function atualizarAnimal(req, res) {
   try {
     const { id } = req.params;
     const dados = req.body;
+
+    if (Object.keys(dados).length === 0) {
+      return res.status(400).json({ erro: 'Nenhum campo foi fornecido para atualização'})
+    }
+
     const animal = await Animal.findByPk(id);
 
     if (!animal) return res.status(404).json({ erro: 'Animal não encontrado' });
@@ -41,7 +46,7 @@ export async function deletarAnimal(req, res) {
     await animal.destroy();
     res.status(204).send();
   } catch (err) {
-    res.status(500).json({ erro: 'Erro ao deletar animal' });
+    res.status(500).json({ erro: 'Erro ao remover animal' });
   }
 }
 
