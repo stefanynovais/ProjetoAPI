@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
-import { sequelize } from '../database/database.js';
+import  {sequelize}  from '../database/database.js';
 
-export default (connectDatabase) => {
+
     const Questionario = sequelize.define('Questionario', {
         id: {
             type: DataTypes.UUID,
@@ -202,5 +202,9 @@ export default (connectDatabase) => {
         timestamps: true
     });
 
-    return Questionario;
-};
+    // Questionario.belongsTo(Usuario, {
+    //     foreignKey: 'usuarioId', // Define a chave estrangeira
+    //     as: 'usuario' // Nome do relacionamento
+    // });
+
+    export default Questionario;

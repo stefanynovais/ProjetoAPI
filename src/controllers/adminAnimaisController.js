@@ -1,7 +1,7 @@
-import AnimalModel from '../models/Animal.js';
-import { connectDatabase } from '../database/database.js';
+import Animal from '../models/Animal.js';
+import {sequelize} from '../database/database.js';
 
-const Animal = AnimalModel(connectDatabase);
+
 
 export async function listarAnimais(req, res) {
   try {

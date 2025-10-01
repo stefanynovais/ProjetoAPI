@@ -2,15 +2,16 @@
 import { Sequelize } from 'sequelize';
 
 //criando uma instância de conexão com o banco
-export const sequelize = new Sequelize({
+ export const sequelize = new Sequelize({
   dialect: 'sqlite', //define que o banco é sqlite 
   storage: './database/db.sqlite' //caminho do arquivo que vai guardar os dados
 });
 
+
 //função assíncrona, por conta que a conexão com o banco pode ser demorada e pode falhar
 export const connectDatabase = async () => {
-  try {
-    await sequelize.authenticate(); //verifica se a conexão com o banco está funcionando
+ try {
+   await sequelize.authenticate(); //verifica se a conexão com o banco está funcionando
     console.log('Conexão com o banco feita com sucesso!');
     return sequelize; //retorna a instância para quem chamar
   } catch (error) { //se a conexão falhar, cai aqui e mostra o erro

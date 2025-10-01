@@ -21,6 +21,8 @@
 
 :tulip: express
 
+:tulip: qrcode
+
 
 ## 📌 Tecnologias:
 

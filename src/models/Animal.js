@@ -1,9 +1,8 @@
 import { DataTypes } from 'sequelize';
-import { sequelize } from '../database/database.js';
+import  {sequelize} from '../database/database.js';
 
 
-export default (connectDatabase) => {
-    return sequelize.define('Animal', {
+const Animal = sequelize.define('Animal', {
         id: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
@@ -49,4 +48,4 @@ export default (connectDatabase) => {
         tableName: 'animais',
         timestamps: true,
     });
-};
+    export default Animal;

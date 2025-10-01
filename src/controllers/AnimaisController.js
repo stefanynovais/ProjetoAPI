@@ -1,7 +1,4 @@
-import AnimalModel from '../models/Animal.js';
-import { connectDatabase } from '../database/database.js';
-
-const Animal = AnimalModel(connectDatabase);
+import Animal from '../models/Animal.js';
 
 export async function PostAnimais(req,res) {
 
