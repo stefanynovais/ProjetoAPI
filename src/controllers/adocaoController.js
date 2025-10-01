@@ -1,3 +1,4 @@
+// src/controllers/adocaoController.js
 import PedidoAdocao from '../models/PedidoAdocao.js';
 import Usuario from '../models/Usuario.js';
 import Questionario from '../models/Questionario.js';
