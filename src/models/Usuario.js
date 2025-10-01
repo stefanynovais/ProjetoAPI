@@ -82,16 +82,6 @@ export default (connectDatabase) => {
         timestamps: true //cria automaticamente os campos createdAt e updatedAt para registrar quando o registro foi criado ou atualizado.
     });
 
-    // Usuario.hasOne(Questionario, {
-    //     foreignKey: 'usuario_id',
-    //     as: 'questionario'
-    // });
-
-    // Questionario.belongsTo(Usuario, {
-    //     foreignKey: 'usuario_id'
-    // });
-
-
     //hook é uma função que o Sequelize executa automaticamente antes ou depois de uma ação no banco de dados
     //hook antes de criar um usuário, a senha é automaticamente transformada em hash
     Usuario.beforeCreate(async (usuario) => {
