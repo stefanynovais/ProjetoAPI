@@ -19,6 +19,10 @@ const router = express.Router();
     // Rota adoção
     router.use(routerAdocao);
 
+    // Rota doação
+    
+    router.use(routerDoacao);
+
     //Rota questionario
     router.use(routerQuestionario);
     
