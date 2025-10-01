@@ -15,7 +15,7 @@ export default async function authAdmin(req, res, next) {
 
     const usuario = await Usuario.findByPk(decoded.id);
     if (!usuario || usuario.administrador !== true) {
-      return res.status(403).json({ erro: 'Apenas administradores podem acessar esta rota' });
+      return res.status(403).json({ erro: 'Acesso não autorizado' });
     }
 
     req.user = usuario;
