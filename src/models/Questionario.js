@@ -187,6 +187,14 @@ import  {sequelize}  from '../database/database.js';
         data_disponivel_para_buscar_animal: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        tutorId: {
+            type: DataTypes.UUID,
+            allowNull: false,
+            references: {
+                model: 'usuarios',
+                key: 'id',
+            },
         }
         
     }, {
