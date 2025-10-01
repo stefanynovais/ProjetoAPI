@@ -6,12 +6,15 @@ const Animal = AnimalModel(connectDatabase);
 export async function PostAnimais(req,res) {
 
     try {
-        const [nome, especie, porte, castrado, vacinado, descricao, foto] = req.body; // ainda vou add a questão do buffer
-        const fotoBuffer = req.file?.buffer; // pega o buffer da imagem
+        const [nome, especie, porte, castrado, vacinado, descricao, fotoBase64] = req.body; // ainda vou add a questão do buffer
+        // const fotoBuffer = req.file?.buffer; // pega o buffer da imagem
 
-        if( !nome || !especie || !porte || !castrado || !vacinado || !descricao || !foto) {
+        if( !nome || !especie || !porte || castrado === undefined|| vacinado === undefined || !descricao || !fotoBase64) {
             res.status(400).json({"erro": "Todos os campos obrigatórios devem ser preenchidos corretamente."});
         }
+
+         // Converte a string base64 para buffer
+        const fotoBuffer = Buffer.from(fotoBase64, 'base64');
 
         const novoAnimal = await Animal.create({
             nome,
