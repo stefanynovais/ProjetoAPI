@@ -16,11 +16,11 @@ export const Doacao = DoacaoModel(sequelize);
 
 //usuario e questionario
 Usuario.hasOne(Questionario, {
-    foreignKey: 'usuarioId',
+    foreignKey: 'tutorId',
     as: 'questionario',
 });
 Questionario.belongsTo(Usuario, {
-    foreignKey: 'usuarioId',
+    foreignKey: 'tutorId',
     as: 'usuario',
 });
 
