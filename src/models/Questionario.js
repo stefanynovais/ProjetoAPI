@@ -1,6 +1,5 @@
 import { DataTypes } from 'sequelize';
-import  {sequelize}  from '../database/database.js';
-
+import { sequelize }  from '../database/database.js';
 
     const Questionario = sequelize.define('Questionario', {
         id: {
@@ -192,7 +191,7 @@ import  {sequelize}  from '../database/database.js';
             type: DataTypes.UUID,
             allowNull: false,
             references: {
-                model: 'usuarios',
+                model: 'Usuario',
                 key: 'id',
             },
         }
@@ -203,7 +202,7 @@ import  {sequelize}  from '../database/database.js';
     });
 
     // Questionario.belongsTo(Usuario, {
-    //     foreignKey: 'usuarioId', // Define a chave estrangeira
+    //     foreignKey: 'tutorId', // Define a chave estrangeira
     //     as: 'usuario' // Nome do relacionamento
     // });
 
