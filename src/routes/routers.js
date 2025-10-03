@@ -22,7 +22,6 @@ const router = express.Router();
     router.use(routerAdocao);
 
     // Rota doação
-
     router.use(routerDoacao);
 
     //Rota questionario
