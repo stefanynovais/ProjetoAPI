@@ -6,14 +6,8 @@ import PedidoAdocao from './PedidoAdocao.js';
 import Doacao from './Doacao.js';
 
 
-import Usuario from '../models/Usuario.js';
-import Questionario from '../models/Questionario.js';
-import Animal from '../models/Animal.js';
-import PedidoAdocao from '../models/PedidoAdocao.js';
-import Doacao from '../models/Doacao.js';
-
-
 //relacionamentos entre os modelos
+
 //usuario e questionario
 Usuario.hasOne(Questionario, {
     foreignKey: 'tutorId',
