@@ -1,8 +1,8 @@
 import express from 'express';
-import { PostAdocao } from '../../controllers/adocaoController.js';
+import { PostDoacao } from '../../controllers/doacaoController.js';
 
 const doacaoRouter = express.Router();
 
-doacaoRouter.post('/doacoes', PostAdocao);
+doacaoRouter.post('/doacoes', PostDoacao);
 
 export default doacaoRouter;
