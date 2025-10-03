@@ -1,5 +1,6 @@
 import express from 'express';
 import { connectDatabase} from './database/database.js';
+import '../src/models/Modelos.js'
 import router from './routes/routers.js';
 
 

@@ -31,7 +31,7 @@ import  {sequelize} from '../database/database.js';
 
         
     }, {
-        tableName: 'doacoes',
+        tableName: 'oacoes',
         timestamps: true
     });
 

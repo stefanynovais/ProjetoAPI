@@ -1,18 +1,10 @@
 import  {sequelize}  from '../database/database.js';
-import AnimalModel from './Animal.js';
-import UsuarioModel from './Usuario.js';
-import QuestionarioModel from './Questionario.js';
-import PedidoAdocaoModel from './PedidoAdocao.js';
-import DoacaoModel from './Doacao.js';
+import Animal from './Animal.js';
+import Usuario from './Usuario.js';
+import Questionario from './Questionario.js';
+import PedidoAdocao from './PedidoAdocao.js';
+import Doacao from './Doacao.js';
 
-
-export const Animal = AnimalModel(sequelize);
-export const Usuario = UsuarioModel(sequelize);
-export const Questionario = QuestionarioModel(sequelize);
-export const PedidoAdocao = PedidoAdocaoModel(sequelize);
-export const Doacao = DoacaoModel(sequelize);
-
-//relacionamentos entre os modelos
 
 //usuario e questionario
 Usuario.hasOne(Questionario, {
@@ -46,4 +38,4 @@ PedidoAdocao.belongsTo(Animal, {
 
 await sequelize.sync({ alter: true });
 
-export default { sequelize, Animal, Usuario, Questionario, PedidoAdocao, Doacao };
+export default { Animal, Usuario, Questionario, PedidoAdocao, Doacao };

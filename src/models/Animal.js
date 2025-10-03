@@ -45,7 +45,7 @@ const Animal = sequelize.define('Animal', {
             allowNull: true
         }
     }, {
-        tableName: 'animais',
+        tableName: 'nimais',
         timestamps: true,
     });
     export default Animal;

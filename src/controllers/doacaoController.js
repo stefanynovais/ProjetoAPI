@@ -1,8 +1,6 @@
-import { connectDatabase } from "../database/database";
-import DoacaoModel from "../models/Doacao.js";
+import Doacao from "../models/Modelos.js";
 import QRCode from 'qrcode';
 
-const Doacao = DoacaoModel(connectDatabase);
 
 export async function PostDoacao(req, res) {
     const { nome, email, valor, mensagem } = req.body;
@@ -33,6 +31,7 @@ export async function PostDoacao(req, res) {
       qrCode: qrCodeDataURL
     });
   } catch (error) {
+    console.error(error); // Adicione esta linha para ver o erro no terminal
     return res.status(500).json({ erro: 'Erro ao gerar QR Code da doação' });
   }
 }
