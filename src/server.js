@@ -1,6 +1,6 @@
 import express from 'express';
 import { connectDatabase} from './database/database.js';
-import '../src/models/Modelos.js'
+import { initModels } from './models/Modelos.js';
 import router from './routes/routers.js';
 
 
@@ -11,6 +11,8 @@ app.use(express.json()); //dizendo ao Express para interpretar JSON no corpo das
 
 // Conecta ao banco de dados
 await connectDatabase();
+
+await initModels(); // garante que as tabelas existam
 
 // Rotas
 app.use('/', router); // importa todas as outras rotas
