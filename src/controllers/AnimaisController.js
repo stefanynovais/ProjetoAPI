@@ -3,14 +3,14 @@ import Animal from '../models/Animal.js';
 export async function PostAnimais(req, res) {
     try {
         // Aqui desestruturamos o objeto
-        const { nome, especie, porte, castrado, vacinado, descricao, fotoBase64 } = req.body;
+        const { nome, especie, porte, castrado, vacinado, descricao, foto } = req.body;
 
-        if (!nome || !especie || !porte || castrado === undefined || vacinado === undefined || !descricao || !fotoBase64) {
+        if (!nome || !especie || !porte || castrado === undefined || vacinado === undefined || !descricao || !foto) {
             return res.status(400).json({ "erro": "Todos os campos obrigatórios devem ser preenchidos corretamente." });
         }
 
         // Converte a string base64 para buffer
-        const fotoBuffer = Buffer.from(fotoBase64, 'base64');
+        const fotoBuffer = Buffer.from(foto, 'base64');
 
         const novoAnimal = await Animal.create({
             nome,

@@ -10,12 +10,12 @@ import Doacao from './Doacao.js';
 
 //usuario e questionario
 Usuario.hasOne(Questionario, {
-    foreignKey: 'tutorId',
+    foreignKey: 'usuarioId',
     as: 'questionarios',
 });
 Questionario.belongsTo(Usuario, {
-    foreignKey: 'tutorId',
-    as: 'Usuario',
+    foreignKey: 'usuarioId',
+    as: 'usuarios',
 });
 
 //usuario e pedido de adocao
@@ -25,27 +25,29 @@ Usuario.hasMany(PedidoAdocao, {
 });
 PedidoAdocao.belongsTo(Usuario, {
     foreignKey: 'usuarioId',
-    as: 'Usuario',
+    as: 'usuarios',
 });
 
 //animal e pedido de adocao
 Animal.hasMany(PedidoAdocao, {
-    foreignKey: 'animaisId',
+    foreignKey: 'animailId',
     as: 'pedidos_adocao',
 });
 PedidoAdocao.belongsTo(Animal, {
-    foreignKey: 'animaisId',
+    foreignKey: 'animailId',
     as: 'animais',
 });
 
+await sequelize.sync();
+
 // ======== FUNÇÃO PARA INICIALIZAR TABELAS ========
-export const initModels = async () => {
-  try {
-    await sequelize.sync({ force: true }); // força criar todas as tabelas
-    console.log('Tabelas criadas com sucesso!');
-  } catch (error) {
-    console.error('Erro ao criar tabelas:', error);
-  }
-};
+// export const initModels = async () => {
+//   try {
+//     await sequelize.sync({ forced: true }); // força criar todas as tabelas
+//     console.log('Tabelas criadas com sucesso!');
+//   } catch (error) {
+//     console.error('Erro ao criar tabelas:', error);
+//   }
+// };
 
 export default { Animal, Usuario, Questionario, PedidoAdocao, Doacao };

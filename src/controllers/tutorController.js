@@ -28,7 +28,7 @@ export const criarTutor = async (req, res) => {
         return res.status(201).json(tutor);
 
     } catch (error) {
-        console.error("Erro ao criar tutor:", error); // <-- Adicione isso!
+        console.error("Erro ao criar tutor:", error); 
         return res.status(500).json({ error: "Erro interno ao cadastrar o tutor" });
     }
 };

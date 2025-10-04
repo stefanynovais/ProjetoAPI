@@ -6,7 +6,7 @@ export const criarQuestionario = async (req, res) => {
     try {
 
         //receber os dados do questionário e o ID do tutor
-        const { tutorId, ...dados } = req.body; //objeto que tem todos os dados enviados pelo frontend
+        const { usuarioId, ...dados } = req.body; //objeto que tem todos os dados enviados pelo frontend
         //quando fazemos post numa api, enviamos dados do frontend para o backend
         //no express.js, esses dados ficam disponíveis no express.js
         //usuarioId separadamente porque ele serve para buscar o tutor no banco 
@@ -14,7 +14,7 @@ export const criarQuestionario = async (req, res) => {
         //dessa forma, a gente não precisa escrever cada campo manualmente, tudo que veio no req.body (exceto o usuarioId) vai direto para o banco
 
         //verifica se o usuário (tutor) existe no banco
-        const usuario = await Usuario.findByPk(tutorId); //busca pelo ID do usuário
+        const usuario = await Usuario.findByPk(usuarioId); //busca pelo ID do usuário
         if (!usuario) {
             //se ele não existir, retorna o 404 Not Found
             return res.status(404).json({ erro: "Usuário não encontrado" });
@@ -49,7 +49,7 @@ export const criarQuestionario = async (req, res) => {
             }
         }
 
-         if (tutorId === undefined || tutorId === null) {
+         if (usuarioId === undefined || usuarioId === null) {
            return res.status(400).json({ erro: "O campo tutorId é obrigatório." });
         }
 
@@ -57,7 +57,7 @@ export const criarQuestionario = async (req, res) => {
         //criando o questionário no banco de dados, associando ao usuário
         const questionario = await Questionario.create({
             ...dados,     //todos os dados do questionário
-            tutorId    //associando o questionário ao tutor correto
+            usuarioId    //associando o questionário ao tutor correto
         });
 
         //retornando o questionário criado

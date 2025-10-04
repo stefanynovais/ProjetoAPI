@@ -76,7 +76,7 @@ import {sequelize} from '../database/database.js';
             defaultValue: false
         }
     }, {
-        tableName: 'Usuario', //força o nome da tabela para "Usuario" no banco de dados
+        tableName: 'usuarios', //força o nome da tabela para "Usuario" no banco de dados
         timestamps: true //cria automaticamente os campos createdAt e updatedAt para registrar quando o registro foi criado ou atualizado.
     });
 

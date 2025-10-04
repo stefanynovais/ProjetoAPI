@@ -187,11 +187,11 @@ import { sequelize }  from '../database/database.js';
             type: DataTypes.STRING,
             allowNull: false
         },
-        tutorId: {
+        usuarioId: {
             type: DataTypes.UUID,
             allowNull: false,
             references: {
-                model: 'Usuario',
+                model: 'usuarios',
                 key: 'id',
             },
         }
