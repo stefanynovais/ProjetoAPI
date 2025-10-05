@@ -1,42 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css" />
-  <title>Bentão Connect</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adote um Amigo 🐾</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 
-<body class="pagina-index">
-  <div class="container" id="container">
-    <!-- Lado Esquerdo (Login/Texto) -->
-    <div class="left-panel">
-      <h1>TERMO</h1>
-      <a href="login.html">
-        <button id="goToLogin">Login</button>
-      </a>
-    </div>
+<body>
+    <header>
+        <h1>Adote um Amigo 🐾</h1>
+    </header>
 
-    <!-- Lado Direito (Formulário de cadastro) -->
-    <div class="right-panel">
-      <h2>CRIAR CONTA</h2>
+    <main>
+        <section id="animal-list">
+            <h2>Animais Disponíveis</h2>
+            <div id="animais"></div>
+        </section>
 
-      <div class="social-icons">
-        <a href="#"><img src="./assets/facebook.png" alt="Facebook" /></a>
-        <a href="#"><img src="./assets/google.png" alt="Google" /></a>
-        <a href="#"><img src="./assets/github.png" alt="GitHub" /></a>
-      </div>
+        <section id="adocao-form">
+            <h2>Registrar Adoção</h2>
+            <form id="formAdocao">
+                <label for="usuario_id">ID do Usuário:</label>
+                <input type="number" id="usuario_id" required />
 
-      <form action="connect.html" method="GET">
-        <input type="text" placeholder="Nome" name="nome" />
-        <input type="email" placeholder="E-mail" name="email" />
-        <input type="password" placeholder="Senha" name="senha" />
-        <button type="submit" class="btn-primary">CRIAR</button>
-      </form>
-    </div>
-  </div>
-  <script src="dinamico.js"></script>
+                <label for="animal_id">ID do Animal:</label>
+                <input type="number" id="animal_id" required />
+
+                <button type="submit">Enviar Pedido</button>
+            </form>
+            <p id="mensagem"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>🐶 Sistema de Adoção - TERMO</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
