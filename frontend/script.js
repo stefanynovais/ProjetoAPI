@@ -1,7 +1,7 @@
 // URL base da API (ajuste se a porta for diferente)
 const API_URL = "http://localhost:3000";
 
-// 🔹 Função para listar os animais disponíveis
+// Função para listar os animais disponíveis
 async function carregarAnimais() {
     try {
         // Faz uma requisição GET para a rota /animais da API
@@ -29,7 +29,7 @@ async function carregarAnimais() {
     }
 }
 
-// 🔹 Evento que escuta o envio do formulário de adoção
+// Evento que escuta o envio do formulário de adoção
 document.getElementById("formAdocao").addEventListener("submit", async (e) => {
     e.preventDefault(); // Impede o recarregamento da página
 
@@ -65,5 +65,5 @@ document.getElementById("formAdocao").addEventListener("submit", async (e) => {
     }
 });
 
-// 🔹 Chama a função ao carregar a página para listar os animais automaticamente
+// Chama a função ao carregar a página para listar os animais automaticamente
 carregarAnimais();
