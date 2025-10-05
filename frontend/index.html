@@ -6,13 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Adote um Amigo 🐾</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 
 <body>
     <header>
         <img src="./assets/Logo.png" alt="Logo" id="logo" />
     </header>
+    <script>
+        const token = localStorage.getItem('token');
 
+        if (!token) {
+        window.location.href = 'login.html'; // redireciona se não estiver logado
+        }
+
+        const response = await fetch('http://localhost:3000/rota-protegida', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+        });
+    </script>
     <main>
         <section id="animal-list">
             <h2>Animais Disponíveis</h2>
