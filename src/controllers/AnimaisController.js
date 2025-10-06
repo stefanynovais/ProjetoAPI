@@ -2,7 +2,6 @@ import Animal from '../models/Animal.js';
 
 export async function PostAnimais(req, res) {
     try {
-        // Aqui desestruturamos o objeto
         const { nome, especie, porte, castrado, vacinado, descricao, foto } = req.body;
 
         if (!nome || !especie || !porte || castrado === undefined || vacinado === undefined || !descricao || !foto) {
@@ -30,14 +29,22 @@ export async function PostAnimais(req, res) {
     }
 }
 
-
 export async function GetAnimais(req,res) {
     try {
-        const animal = await Animal.findAll({
-          attributes:['id', 'nome', 'descricao', 'genero']
-        });
+        const { nome, especie, porte, castrado, vacinado, adotado} = req.query; // vê os campos de consulta que podem terna req
 
-       return res.status(200).json(animal);
+        const filtro = {}; 
+
+        if (nome) filtro.nome = nome;
+        if (especie) filtro.especie = especie;
+        if (porte) filtro.porte = porte;
+        if (castrado !== undefined) filtro.castrado = castrado === 'true'; // transforma os booleans em true
+        if (vacinado !== undefined) filtro.vacinado = vacinado === 'true';
+        if (adotado !== undefined) filtro.adotado = adotado === 'true';
+
+        const animal = await Animal.findAll({ filtro, order: [['createdAt', 'ASC']]}); // oredena de mais antigo par mais novo
+
+        return res.status(200).json(animal);
         
     } catch (error) {
         return res.status(500).json({"erro": "Erro ao buscar animais"});
