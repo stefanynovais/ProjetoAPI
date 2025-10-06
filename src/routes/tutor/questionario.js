@@ -1,8 +1,8 @@
 import express from 'express';
-import { criarQuestionario } from '../../controllers/questionarioController.js';
+import { PostQuestionario } from '../../controllers/questionarioController.js';
 
 const router = express.Router();
 
-router.post('/questionario', criarQuestionario);
+router.post('/questionario', PostQuestionario);
 
 export default router;

@@ -2,7 +2,7 @@ import Questionario from '../models/Questionario.js';
 import Usuario from '../models/Usuario.js';
 
 //controller do POST /questionario
-export const criarQuestionario = async (req, res) => {
+export const PostQuestionario = async (req, res) => {
     try {
 
         //receber os dados do questionário e o ID do tutor

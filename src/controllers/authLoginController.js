@@ -12,7 +12,7 @@ import  {sequelize}  from '../database/database.js';
 
 
 
-export const login = async (req, res) => {
+export const Login = async (req, res) => {
   try {
     const { email, senha } = req.body;
 
