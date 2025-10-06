@@ -1,4 +1,4 @@
-// URL base da API (ajuste se a porta for diferente)
+
 const API_URL = "http://localhost:3000";
 
 // Função para listar os animais disponíveis

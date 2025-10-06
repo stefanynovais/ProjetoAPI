@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🐾 Questionário 🐾</title>
+<link rel="stylesheet" href="questionario.css">
+</head>
+<body>
+     <div class="modal">
+  <h2>🐾 Questionário 🐾</h2>
+  <form id="questionarioForm">
+    <input type="hidden" name="usuarioId" value="INSIRA_O_ID_DO_USUARIO_AQUI" required>
+
+    <div class="form-group">
+      <label>Empregado:</label>
+      <select name="empregado" required>
+        <option value="">Selecione</option>
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Quantos animais possui:</label>
+      <input type="number" name="quantos_animais_possui" min="0" required>
+    </div>
+
+    <div class="form-group">
+      <label>Motivos para adotar:</label>
+      <textarea name="motivos_para_adotar" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Quem vai sustentar o animal:</label>
+      <input type="text" name="quem_vai_sustentar_o_animal" required>
+    </div>
+
+    <div class="form-group">
+      <label>Número de adultos na casa:</label>
+      <input type="number" name="numero_adultos_na_casa" min="0" required>
+    </div>
+
+    <div class="form-group">
+      <label>Número de crianças na casa:</label>
+      <input type="number" name="numero_criancas_na_casa" min="0" required>
+    </div>
+
+    <div class="form-group">
+      <label>Idades das crianças (separadas por vírgula):</label>
+      <input type="text" name="idades_criancas" required>
+    </div>
+
+    <div class="form-group">
+      <label>Tipo de residência:</label>
+      <input type="text" name="residencia_tipo" placeholder="própria ou alugada" required>
+    </div>
+
+    <div class="form-group">
+      <label>Proprietário permite animais:</label>
+      <select name="proprietario_permite_animais" required>
+        <option value="">Selecione</option>
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Todos de acordo com a adoção:</label>
+      <select name="todos_de_acordo_com_adocao" required>
+        <option value="">Selecione</option>
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Responsável pelo animal:</label>
+      <input type="text" name="responsavel_pelo_animal" required>
+    </div>
+
+    <div class="form-group">
+      <label>Responsável concorda com adoção:</label>
+      <select name="responsavel_concorda_com_adocao" required>
+        <option value="">Selecione</option>
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Há pessoas alérgicas ou que não gostam de animais?</label>
+      <select name="ha_alergico_ou_pessoas_que_nao_gostam" required>
+        <option value="">Selecione</option>
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Gasto mensal estimado:</label>
+      <input type="number" name="gasto_mensal_estimado" min="0" required>
+    </div>
+
+    <div class="form-group">
+      <label>Valor disponível no orçamento:</label>
+      <select name="valor_disponivel_no_orcamento" required>
+        <option value="">Selecione</option>
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Tipo de alimentação:</label>
+      <input type="text" name="tipo_alimentacao" required>
+    </div>
+
+    <div class="form-group">
+      <label>Local que o animal vai ficar:</label>
+      <input type="text" name="local_que_o_animal_vai_ficar" required>
+    </div>
+
+    <div class="form-group">
+      <label>Forma de permanência:</label>
+      <input type="text" name="forma_de_permanencia" required>
+    </div>
+
+    <div class="form-group">
+      <label>Forma de confinamento:</label>
+      <input type="text" name="forma_de_confinamento" required>
+    </div>
+
+    <div class="form-group">
+      <label>Tera brinquedos:</label>
+      <select name="tera_brinquedos" required>
+        <option value="">Selecione</option>
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Tera abrigo:</label>
+      <select name="tera_abrigo" required>
+        <option value="">Selecione</option>
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Tera passeios acompanhado:</label>
+      <select name="tera_passeios_acompanhado" required>
+        <option value="">Selecione</option>
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Tera passeios sozinho:</label>
+      <select name="tera_passeios_sozinho" required>
+        <option value="">Selecione</option>
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Companhia de outro animal:</label>
+      <select name="companhia_outro_animal" required>
+        <option value="">Selecione</option>
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Companhia humana 24h:</label>
+      <select name="companhia_humana_24h" required>
+        <option value="">Selecione</option>
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Companhia humana parcial:</label>
+      <select name="companhia_humana_parcial" required>
+        <option value="">Selecione</option>
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Sem companhia humana:</label>
+      <select name="sem_companhia_humana" required>
+        <option value="">Selecione</option>
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Sem companhia animal:</label>
+      <select name="sem_companhia_animal" required>
+        <option value="">Selecione</option>
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>O que faz em viagem:</label>
+      <input type="text" name="o_que_faz_em_viagem" required>
+    </div>
+
+    <div class="form-group">
+      <label>O que faz se fugir:</label>
+      <input type="text" name="o_que_faz_se_fugir" required>
+    </div>
+
+    <div class="form-group">
+      <label>O que faz se não puder criar:</label>
+      <input type="text" name="o_que_faz_se_nao_puder_criar" required>
+    </div>
+
+    <div class="form-group">
+      <label>Animais que já criou:</label>
+      <input type="text" name="animais_que_ja_criou" required>
+    </div>
+
+    <div class="form-group">
+      <label>Destino dos animais anteriores:</label>
+      <input type="text" name="destino_animais_anteriores" required>
+    </div>
+
+    <div class="form-group">
+      <label>Costuma esterilizar:</label>
+      <select name="costuma_esterilizar" required>
+        <option value="">Selecione</option>
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Costuma vacinar:</label>
+      <select name="costuma_vacinar" required>
+        <option value="">Selecione</option>
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Costuma vermifugar:</label>
+      <select name="costuma_vermifugar" required>
+        <option value="">Selecione</option>
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Veterinário usual:</label>
+      <input type="text" name="veterinario_usual" required>
+    </div>
+
+    <div class="form-group">
+      <label>Forma de educar:</label>
+      <input type="text" name="forma_de_educar" required>
+    </div>
+
+    <div class="form-group">
+      <label>Envia fotos e vídeos do local:</label>
+      <select name="envia_fotos_e_videos_do_local" required>
+        <option value="">Selecione</option>
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Aceita visitas e fotos do animal:</label>
+      <select name="aceita_visitas_e_fotos_do_animal" required>
+        <option value="">Selecione</option>
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Topa entrar no grupo de adotantes:</label>
+      <select name="topa_entrar_grupo_adotantes" required>
+        <option value="">Selecione</option>
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Concorda com taxa de adoção:</label>
+      <select name="concorda_com_taxa_adocao" required>
+        <option value="">Selecione</option>
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Data disponível para buscar animal:</label>
+      <input type="date" name="data_disponivel_para_buscar_animal" required>
+    </div>
+
+    <button type="submit">Enviar Questionário</button>
+  </form>
+</div>
+<script src="questionario.js"></script>
+</body>
+</html>

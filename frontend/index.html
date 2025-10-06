@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Termo's Pet - Galeria</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="popup.css" />
 </head>
+
 <body>
   <header>
     <img src="./assets/Logo.png" alt="Logo" id="logo" />
@@ -18,9 +21,14 @@
     </section>
     <aside id="info">
       <h2 id="user"> usuario</h2>
-      <p>Bem-vindo ao Termo's Pet, um sistema dedicado a conectar animais que precisam de um lar amoroso com pessoas dispostas a adotá-los. Nosso objetivo é facilitar o processo de adoção, promovendo o bem-estar animal e ajudando a encontrar lares permanentes para nossos amigos de quatro patas.</p>
-      <p>Navegue pela nossa galeria de animais disponíveis para adoção. Cada animal possui uma ficha detalhada com informações sobre sua personalidade, necessidades especiais e fotos adoráveis. Se você encontrar um companheiro que toque seu coração, entre em contato conosco para iniciar o processo de adoção.</p>
-      <p>Agradecemos seu interesse em adotar e contribuir para uma causa tão nobre. Juntos, podemos fazer a diferença na vida desses animais!</p>
+      <p>Bem-vindo ao Termo's Pet, um sistema dedicado a conectar animais que precisam de um lar amoroso com pessoas
+        dispostas a adotá-los. Nosso objetivo é facilitar o processo de adoção, promovendo o bem-estar animal e ajudando
+        a encontrar lares permanentes para nossos amigos de quatro patas.</p>
+      <p>Navegue pela nossa galeria de animais disponíveis para adoção. Cada animal possui uma ficha detalhada com
+        informações sobre sua personalidade, necessidades especiais e fotos adoráveis. Se você encontrar um companheiro
+        que toque seu coração, entre em contato conosco para iniciar o processo de adoção.</p>
+      <p>Agradecemos seu interesse em adotar e contribuir para uma causa tão nobre. Juntos, podemos fazer a diferença na
+        vida desses animais!</p>
 
     </aside>
   </main>
@@ -28,6 +36,32 @@
   <footer>
     <p>🐶 Sistema de Adoção - TERMO</p>
   </footer>
+
+
+  <!-- ================= POPUP ================= -->
+<div id="popup" class="popup-overlay hidden">
+  <div class="popup-content">
+    <!-- Tela 1: Confirmação -->
+    <div id="popup-confirm" class="popup-screen">
+      <h2>Deseja adotar este animal?</h2>
+      <img id="animal-photo" src="" alt="Foto do animal" class="popup-animal-photo"/>
+      <p id="animal-name" style="font-weight: bold;"></p>
+      <p id="animal-desc"></p>
+      <div class="popup-buttons">
+        <button id="btn-no" class="btn btn-cancel">Não</button>
+        <button id="btn-yes" class="btn btn-confirm">Sim</button>
+      </div>
+    </div>
+
+    <!-- Tela 2: Questionário via iframe -->
+    <div id="popup-form" class="popup-screen hidden">
+      <iframe src="questionario.html" frameborder="0" class="popup-iframe"></iframe>
+      <div class="popup-buttons">
+        <button id="btn-back" class="btn btn-back">Voltar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   <script>
     // ---------- utilitários ----------
@@ -40,11 +74,11 @@
     }
 
     const KEYWORDS = {
-      mamiferos: ['cachorro','cao','cachorra','gato','gatinho','hamster','coelho','cavalo','vaca','porco','rato','furao','furão','leao','leão','furão'],
-      aves: ['ave','passarinho','passaro', 'pássaro','papagaio','canario','canário','periquito','galinha','pato','galo','corvo','tucano','calopsita','calopsita','pardal'],
-      repteis: ['reptil','jacare','jacaré','crocodilo','cobra','serpente','tartaruga','lagarto','iguana','iguana'],
-      anfibios: ['anfibio','sapo','ra','rã','salamandra','perereca','rã'],
-      peixes: ['peixe','betta','carpa','goldfish','tilapia','tilápia','guppy','tetra']
+      mamiferos: ['cachorro', 'cao', 'cachorra', 'gato', 'gatinho', 'hamster', 'coelho', 'cavalo', 'vaca', 'porco', 'rato', 'furao', 'furão', 'leao', 'leão', 'furão'],
+      aves: ['ave', 'passarinho', 'passaro', 'pássaro', 'papagaio', 'canario', 'canário', 'periquito', 'galinha', 'pato', 'galo', 'corvo', 'tucano', 'calopsita', 'calopsita', 'pardal'],
+      repteis: ['reptil', 'jacare', 'jacaré', 'crocodilo', 'cobra', 'serpente', 'tartaruga', 'lagarto', 'iguana', 'iguana'],
+      anfibios: ['anfibio', 'sapo', 'ra', 'rã', 'salamandra', 'perereca', 'rã'],
+      peixes: ['peixe', 'betta', 'carpa', 'goldfish', 'tilapia', 'tilápia', 'guppy', 'tetra']
     };
 
     function classificarEspecie(especieRaw) {
@@ -58,24 +92,53 @@
     }
 
     // ---------- renderização de cards ----------
-    function criarCard(animal) {
-      const genero = Number(animal.genero);
-      const emojiGenero = genero === 0 ? '♂️' : '♀️';
-      const textoGenero = genero === 0 ? 'Macho' : 'Fêmea';
+    // function criarCard(animal) {
+    //   const genero = Number(animal.genero);
+    //   const emojiGenero = genero === 0 ? '♂️' : '♀️';
+    //   const textoGenero = genero === 0 ? 'Macho' : 'Fêmea';
 
-      const div = document.createElement('div');
-      div.className = 'animal';
-      div.innerHTML = `
-        <img src="http://localhost:3000/animais/${animal.id}/foto" alt="Foto de ${animal.nome}" onerror="this.src='./assets/fallback.png'"/>
-        <div class="animal-info">
-          <h3>
-            <span class="nome-genero">${animal.nome} <span title="${textoGenero}" class="emoji">${emojiGenero}</span></span>
-          </h3>
-          <p>${animal.descricao || ''}</p>
-        </div>
-      `;
-      return div;
-    }
+    //   const div = document.createElement('div');
+    //   div.className = 'animal';
+    //   div.innerHTML = `
+    //     <img src="http://localhost:3000/animais/${animal.id}/foto" alt="Foto de ${animal.nome}" onerror="this.src='./assets/fallback.png'"/>
+    //     <div class="animal-info">
+    //       <h3>
+    //         <span class="nome-genero">${animal.nome} <span title="${textoGenero}" class="emoji">${emojiGenero}</span></span>
+    //       </h3>
+    //       <p>${animal.descricao || ''}</p>
+    //     </div>
+    //   `;
+    //   return div;
+    // }
+
+ function criarCard(animal) {
+  const genero = Number(animal.genero);
+  const emojiGenero = genero === 0 ? '♂️' : '♀️';
+  const textoGenero = genero === 0 ? 'Macho' : 'Fêmea';
+
+  const div = document.createElement('div');
+  div.className = 'animal';
+  div.dataset.id = animal.id;
+  div.dataset.nome = animal.nome;
+  div.dataset.descricao = animal.descricao || '';
+
+  div.innerHTML = `
+    <img src="http://localhost:3000/animais/${animal.id}/foto" 
+         alt="Foto de ${animal.nome}" 
+         onerror="this.src='./assets/fallback.png'"/>
+    <div class="animal-info">
+      <h3>
+        <span class="nome-genero">${animal.nome} <span title="${textoGenero}" class="emoji">${emojiGenero}</span></span>
+      </h3>
+      <p>${animal.descricao || ''}</p>
+    </div>
+  `;
+
+  // Clique direto abre popup
+  div.addEventListener('click', () => abrirPopup(animal));
+
+  return div;
+}
 
     // ---------- montar carrosséis por grupo ----------
     async function carregarEExibirAnimais() {
@@ -93,7 +156,7 @@
         const container = document.getElementById('galeria-geral');
         container.innerHTML = '';
 
-        const order = ['mamiferos','aves','repteis','anfibios','peixes','outros'];
+        const order = ['mamiferos', 'aves', 'repteis', 'anfibios', 'peixes', 'outros'];
         const titles = { mamiferos: 'Mamíferos', aves: 'Aves', repteis: 'Répteis', anfibios: 'Anfíbios', peixes: 'Peixes', outros: 'Outros' };
 
         order.forEach(key => {
@@ -136,5 +199,7 @@
     // inicia
     carregarEExibirAnimais();
   </script>
+  <script src="popup.js"></script>
 </body>
+
 </html>

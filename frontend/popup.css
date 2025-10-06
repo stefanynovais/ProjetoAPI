@@ -1,0 +1,92 @@
+/* ================= OVERLAY ================= */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  transition: opacity 0.3s ease;
+}
+
+.popup-overlay.hidden {
+  display: none;
+}
+
+/* ================= CONTEÚDO ================= */
+.popup-content {
+  background: #fff;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow-y: auto;
+}
+
+/* ================= TELAS INTERNAS ================= */
+.popup-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.popup-screen.hidden {
+  display: none;
+}
+
+/* ================= BOTÕES ================= */
+.popup-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-cancel { background: #ccc; color: #333; }
+.btn-cancel:hover { background: #bbb; }
+
+.btn-confirm { background: #78A49B; color: #fff; }
+.btn-confirm:hover { background: #5e7b76; }
+
+.btn-back { background: #f2b5a0; color: #fff; }
+.btn-back:hover { background: #e07d6f; }
+
+/* ================= FOTO DO ANIMAL ================= */
+.popup-animal-photo {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain; /* mostra inteira, pode sobrar espaço */
+  border-radius: 10px;
+  background-color: #f2f2f2; /* opcional, pra preencher os espaços */
+}
+
+/* ================= IFRAME ================= */
+.popup-iframe {
+  width: 100%;
+  height: 80vh;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+/* ================= RESPONSIVIDADE ================= */
+@media(max-width: 500px) {
+  .popup-content { padding: 15px; }
+  .popup-iframe { height: 60vh; }
+}

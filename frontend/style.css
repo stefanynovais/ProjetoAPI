@@ -15,7 +15,7 @@ main {
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   gap: 20px; /*O gap é uma propriedade CSS usada para definir o espaçamento entre elementos dentro de um container que usa display: flex ou display: grid.*/
   padding: 40px;
 }
