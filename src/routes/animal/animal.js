@@ -7,7 +7,7 @@ const routerAnimal = express.Router();
 
 routerAnimal.post('/animais', upload.single('foto'), PostAnimal);
 routerAnimal.get('/animais', GetAnimais);
-routerAnimal.get('/animais/:id/foto/', ExibirFoto);
+routerAnimal.get('/animais/:id/foto', ExibirFoto);
 
 export default routerAnimal;
 
