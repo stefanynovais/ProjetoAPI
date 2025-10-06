@@ -3,7 +3,7 @@
 ## 🎯 Funcionamento e objetivos:
 Este projeto tem como objetivo a criação de uma API para um sistema de adoção de animais, atendendo aos requisitos de funcionalidades e endpoints impostos pela Venturs, bem como um frontend personalizado, que combina com a proposta do grupo.
 
-## ✨ Integrantes: 
+## ✨ Integrantes e contribuição: 
 :cherry_blossom: [Ana Júlia](https://github.com/anajuca): rotas do tutor, coodernação e roteirização da apresentação, escrita e personalização do arquivo README.md;
 
 :cherry_blossom: [Julia](https://github.com/juliaaamendes): rotas de doações e adoções, frontend;
@@ -17,7 +17,6 @@ Este projeto tem como objetivo a criação de uma API para um sistema de adoçã
 ### 🐈‍⬛ Turma: :octocat: 2DS MTEC
 
 ## ⚙️ Dependências:
-:tulip: npm 
 
 :tulip: jsonwebtoken
 
