@@ -7,8 +7,6 @@ const seed = async () => {
     //conectando ao banco 
     await connectDatabase();
 
-  
-
     //sincroniza a tabela (force: true apaga dados antigos)
     await Usuario.sync({ force: true });
 
