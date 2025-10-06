@@ -1,32 +1,40 @@
 import Animal from '../models/Animal.js';
 
 export async function PostAnimais(req, res) {
-    try {
-        const { nome, especie, porte, castrado, vacinado, descricao, foto, genero } = req.body;
+  try {
+    const { nome, especie, porte, castrado, vacinado, descricao, genero } = req.body;
+    const file = req.file; // multer coloca o arquivo aqui
 
-        if (!nome || !especie || !porte || castrado === undefined || vacinado === undefined || !descricao || !foto || genero === undefined) {
-            return res.status(400).json({ "erro": "Todos os campos obrigatórios devem ser preenchidos corretamente." });
-        }
-
-        // Converte a string base64 para buffer
-
-        const novoAnimal = await Animal.create({
-            nome,
-            especie,
-            porte,
-            castrado,
-            vacinado,
-            descricao,
-            foto: fotoBuffer,
-            genero,
-        });
-
-        return res.status(201).json({ mensagem: "Animal cadastrado com sucesso!", animal: novoAnimal });
-
-    } catch (error) {
-        console.error("Erro ao cadastrar animal:", error);
-        return res.status(500).json({ "erro": "Erro interno ao cadastrar o animal." });
+    // Validações básicas
+    if (!nome || !especie || !porte || castrado === undefined || vacinado === undefined || !descricao || !file || genero === undefined) {
+      return res.status(400).json({ erro: "Todos os campos obrigatórios devem ser preenchidos corretamente." });
     }
+
+    // converte castrado/vacinado (vêm como string) para boolean
+    const castradoBool = (castrado === 'true' || castrado === true);
+    const vacinadoBool = (vacinado === 'true' || vacinado === true);
+    // converte genero para número (0 ou 1)
+    const generoNum = Number(genero);
+
+    // file.buffer já é um Buffer (graças ao memoryStorage)
+    const fotoBuffer = req.file.buffer;
+
+    const novoAnimal = await Animal.create({
+      nome,
+      especie,
+      porte,
+      castrado: castradoBool,
+      vacinado: vacinadoBool,
+      descricao,
+      foto: fotoBuffer,
+      genero: generoNum,
+    });
+
+    return res.status(201).json({ mensagem: "Animal cadastrado com sucesso!", animal: novoAnimal });
+  } catch (error) {
+    console.error("Erro ao cadastrar animal:", error);
+    return res.status(500).json({ erro: "Erro interno ao cadastrar o animal." });
+  }
 }
 
 
@@ -63,7 +71,7 @@ export const exibirFoto = async (req, res) => {
       return res.status(404).send('Imagem não encontrada');
     }
 
-    res.set('Content-Type', 'image/png');
+    res.set('Content-Type', 'image/jpeg');
     res.send(animal.foto);
   } catch (error) {
     res.status(500).send('Erro ao carregar imagem');
