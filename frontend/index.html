@@ -1,97 +1,140 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Termo's Pet</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="shortcut icon" href="./assets/icon.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Termo's Pet - Galeria</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-    <header>
-        <img src="./assets/Logo.png" alt="Logo" id="logo" />
-    </header>
-    <script>
-        const token = localStorage.getItem('token');
+  <header>
+    <img src="./assets/Logo.png" alt="Logo" id="logo" />
+  </header>
 
-        if (!token) {
-        window.location.href = 'login.html'; //redireciona se não estiver logado
-        }
+  <main>
+    <section id="animal-list">
+      <h2>Animais Disponíveis</h2>
+      <div id="galeria-geral"></div>
+    </section>
+    <aside id="info">
+      <h2 id="user"> usuario</h2>
+      <p>Bem-vindo ao Termo's Pet, um sistema dedicado a conectar animais que precisam de um lar amoroso com pessoas dispostas a adotá-los. Nosso objetivo é facilitar o processo de adoção, promovendo o bem-estar animal e ajudando a encontrar lares permanentes para nossos amigos de quatro patas.</p>
+      <p>Navegue pela nossa galeria de animais disponíveis para adoção. Cada animal possui uma ficha detalhada com informações sobre sua personalidade, necessidades especiais e fotos adoráveis. Se você encontrar um companheiro que toque seu coração, entre em contato conosco para iniciar o processo de adoção.</p>
+      <p>Agradecemos seu interesse em adotar e contribuir para uma causa tão nobre. Juntos, podemos fazer a diferença na vida desses animais!</p>
 
-        const response = await fetch('http://localhost:3000/rota-protegida', {
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${token}`
+    </aside>
+  </main>
+
+  <footer>
+    <p>🐶 Sistema de Adoção - TERMO</p>
+  </footer>
+
+  <script>
+    // ---------- utilitários ----------
+    function normalizeStr(str) {
+      return String(str || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '') // remove acentos
+        .toLowerCase()
+        .trim();
+    }
+
+    const KEYWORDS = {
+      mamiferos: ['cachorro','cao','cachorra','gato','gatinho','hamster','coelho','cavalo','vaca','porco','rato','furao','furão','leao','leão','furão'],
+      aves: ['ave','passarinho','passaro', 'pássaro','papagaio','canario','canário','periquito','galinha','pato','galo','corvo','tucano','calopsita','calopsita','pardal'],
+      repteis: ['reptil','jacare','jacaré','crocodilo','cobra','serpente','tartaruga','lagarto','iguana','iguana'],
+      anfibios: ['anfibio','sapo','ra','rã','salamandra','perereca','rã'],
+      peixes: ['peixe','betta','carpa','goldfish','tilapia','tilápia','guppy','tetra']
+    };
+
+    function classificarEspecie(especieRaw) {
+      const s = normalizeStr(especieRaw);
+      for (const [grupo, palavras] of Object.entries(KEYWORDS)) {
+        for (const p of palavras) {
+          if (s === p || s.includes(p)) return grupo;
         }
+      }
+      return 'outros';
+    }
+
+    // ---------- renderização de cards ----------
+    function criarCard(animal) {
+      const genero = Number(animal.genero);
+      const emojiGenero = genero === 0 ? '♂️' : '♀️';
+      const textoGenero = genero === 0 ? 'Macho' : 'Fêmea';
+
+      const div = document.createElement('div');
+      div.className = 'animal';
+      div.innerHTML = `
+        <img src="http://localhost:3000/animais/${animal.id}/foto" alt="Foto de ${animal.nome}" onerror="this.src='./assets/fallback.png'"/>
+        <div class="animal-info">
+          <h3>
+            <span class="nome-genero">${animal.nome} <span title="${textoGenero}" class="emoji">${emojiGenero}</span></span>
+          </h3>
+          <p>${animal.descricao || ''}</p>
+        </div>
+      `;
+      return div;
+    }
+
+    // ---------- montar carrosséis por grupo ----------
+    async function carregarEExibirAnimais() {
+      try {
+        const resp = await fetch('http://localhost:3000/animais');
+        if (!resp.ok) throw new Error('Erro ao buscar animais');
+        const animais = await resp.json();
+
+        const grupos = { mamiferos: [], aves: [], repteis: [], anfibios: [], peixes: [], outros: [] };
+        animais.forEach(a => {
+          const grupo = classificarEspecie(a.especie);
+          grupos[grupo].push(a);
         });
-    </script>
-    <main>
-        <section id="animal-list">
-            <h2>Animais Disponíveis</h2>
-            <div class="carrosel-container">
-                <div class="galeria" id="galeria"></div>
+
+        const container = document.getElementById('galeria-geral');
+        container.innerHTML = '';
+
+        const order = ['mamiferos','aves','repteis','anfibios','peixes','outros'];
+        const titles = { mamiferos: 'Mamíferos', aves: 'Aves', repteis: 'Répteis', anfibios: 'Anfíbios', peixes: 'Peixes', outros: 'Outros' };
+
+        order.forEach(key => {
+          if (grupos[key].length === 0) return;
+
+          const section = document.createElement('section');
+          section.className = 'carrossel-section';
+          section.innerHTML = `
+            <div class="section-header">
+              <h3 class="section-title">${titles[key]}</h3>
+              <div class="controls">
+                <button class="btn-left" aria-label="Voltar">‹</button>
+                <button class="btn-right" aria-label="Avançar">›</button>
+              </div>
             </div>
-            
-            <script>
-                async function carregarAnimais() {
-                const resposta = await fetch('http://localhost:3000/animais');
-                const animais = await resposta.json();
+            <div class="carrossel-container">
+              <div class="galeria" id="galeria-${key}"></div>
+            </div>
+          `;
+          container.appendChild(section);
 
-                const galeria = document.getElementById('galeria');
-                galeria.innerHTML = '';
+          const gal = section.querySelector(`#galeria-${key}`);
+          grupos[key].forEach(animal => gal.appendChild(criarCard(animal)));
 
-                animais.forEach(animal => {
-                    const div = document.createElement('div');
-                    div.className = 'animal';
+          // botões de navegação
+          const containerCarrossel = section.querySelector('.carrossel-container');
+          const btnLeft = section.querySelector('.btn-left');
+          const btnRight = section.querySelector('.btn-right');
 
-                    const genero = Number(animal.genero);
-                    const emojiGenero = genero === 0 ? '♂️' : '♀️';
-                    const textoGenero = genero === 0 ? 'Macho' : 'Fêmea';
+          btnLeft.addEventListener('click', () => containerCarrossel.scrollBy({ left: -420, behavior: 'smooth' }));
+          btnRight.addEventListener('click', () => containerCarrossel.scrollBy({ left: 420, behavior: 'smooth' }));
+        });
 
-                    div.innerHTML = `
-                    <img src="http://localhost:3000/animais/${animal.id}/foto" alt="Foto de ${animal.nome}" />
-                    <div class="animal-info">
-                        <h3>
-                        ${animal.nome}
-                        <span title="${textoGenero}">${emojiGenero}</span>
-                        </h3>
-                        <p>${animal.descricao}</p>
-                    </div>
-                    `;
+      } catch (err) {
+        console.error(err);
+        document.getElementById('galeria-geral').innerText = 'Erro ao carregar animais.';
+      }
+    }
 
-
-
-                    galeria.appendChild(div);
-                });
-                }
-
-                carregarAnimais();
-            </script>
-            
-        </section>
-
-        <section id="adocao-form">
-            <h2>Registrar Adoção</h2>
-            <form id="formAdocao">
-                <label for="usuario_id">ID do Usuário:</label>
-                <input type="number" id="usuario_id" required />
-
-                <label for="animal_id">ID do Animal:</label>
-                <input type="number" id="animal_id" required />
-
-                <button type="submit">Enviar Pedido</button>
-            </form>
-            <p id="mensagem"></p>
-        </section>
-    </main>
-
-    <footer>
-        <p>🐶 Sistema de Adoção - TERMO</p>
-    </footer>
-
-    <script src="script.js"></script>
+    // inicia
+    carregarEExibirAnimais();
+  </script>
 </body>
-
 </html>

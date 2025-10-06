@@ -6,7 +6,7 @@ const camposObrigatorios = [
     'estado', 'idade', 'cpf', 'endereco', 'bairro', 'cep', 'telefone'
 ];
 
-export const criarTutor = async (req, res) => {
+export const PostTutor = async (req, res) => {
     try {
         const camposFaltantes = camposObrigatorios.filter(campo => !req.body[campo]);
 
@@ -33,7 +33,7 @@ export const criarTutor = async (req, res) => {
     }
 };
 
-export const buscarTutor = async (req, res) => {
+export const GetTutor = async (req, res) => {
     try {
         const tutor = await Usuario.findByPk(req.params.id);
 
@@ -48,7 +48,7 @@ export const buscarTutor = async (req, res) => {
     }
 };
 
-export const atualizarTutor = async (req, res) => {
+export const PatchTutor = async (req, res) => {
    
     try {
         if (Object.keys(req.body).length === 0) {
