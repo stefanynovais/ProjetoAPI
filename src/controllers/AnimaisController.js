@@ -5,7 +5,6 @@ export async function PostAnimal(req, res) {
     const { nome, especie, porte, castrado, vacinado, descricao, genero } = req.body;
     const file = req.file; // multer coloca o arquivo aqui
 
-    // Validações básicas
     if (!nome || !especie || !porte || castrado === undefined || vacinado === undefined || !descricao || !file || genero === undefined) {
       return res.status(400).json({ erro: "Todos os campos obrigatórios devem ser preenchidos corretamente." });
     }
@@ -53,9 +52,15 @@ export async function GetAnimais(req,res) {
         if (genero !== undefined) filtro.genero = genero === 'true';
 
 
-        const animal = await Animal.findAll({ filtro, order: [['createdAt', 'ASC']]}); // oredena de mais antigo par mais novo
+        const animal = await Animal.findAll({
+          where: filtro,
+          attributes: { exclude: ['foto'] }, // não retorna o campo foto pq é  muito grande
+          order: [['createdAt', 'ASC']] 
+        }); 
 
+        console.log(animal);
         return res.status(200).json(animal);
+         
         
     } catch (error) {
         return res.status(500).json({"erro": "Erro ao buscar animais"});
