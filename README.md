@@ -1,5 +1,5 @@
 # **🐾 : Sistema de Adoção - API REST com Node.js : 🐾**
-## 📌 Integrantes: 
+## 👧🏻 Integrantes: 
 :cherry_blossom: Ana Júlia
 
 :cherry_blossom: Júlia
@@ -12,8 +12,8 @@
  
 ### 🐈‍⬛ Turma: :octocat: 2DS MTEC
 
-## 📌 Dependências:
-:tulip: npm i
+## ⚙️ Dependências:
+:tulip: npm 
 
 :tulip: jsonwebtoken
 
@@ -25,21 +25,43 @@
 
 :tulip: cors
 
+:tulip: multer
 
-## 📌 Tecnologias:
+
+## 🛠️ Como executar o sistema:
+
+- Certifique-se de baixar todas as dependências utilizando o npm
+- Entre na pasta `src` do projeto e execute:
+  
+```bash
+node server.js
+```
+
+
+## 💻 Tecnologias utilizadas:
 
 [![My Skills](https://skillicons.dev/icons?i=js,sqlite,nodejs,express)](https://skillicons.dev)
 
-## 📌 Arquitetura e Estrutura do Projeto
+
+## 🗂️  Arquitetura e Estrutura do Projeto
  
 O projeto segue uma estrutura organizada, incluindo pastas para diferentes componentes:
  
-*   `controllers`: Contém a lógica de negócios para processar requisições. Ele executa o pedido do usuário, busca informações no banco e prepara a resposta para o cliente.
-    *   Exemplos de Controllers: `AnimaisController.js`, `AdocaoController.js`, `authController.js`, `TutorController.js`.
-*   `models`: Define as entidades do banco de dados.
-*   `routes`: Define os caminhos (endpoints) para acesso aos recursos do sistema.
-*   `database`: Contém arquivos relacionados à conexão com o banco de dados.
-*   `middlewares`: Contém a lógica para interceptar requisições para a autenticação de administrador (`authAdmin.js`).
+📁controllers  
+    └── Contém a lógica de negócios para processar requisições, processar pedido do usuário, buscar informações no banco     e preparar resposta para o cliente. 
+Exemplos: AnimaisController.js; AdocaoController.js; authController.js; TutorController.js  
+
+📁 models  
+   └── Define como entidades do banco de dados.  
+
+📁 routes  
+   └── Define os caminhos (endpoints) para acesso aos recursos do sistema.  
+
+📁 database  
+   └── Contém arquivos relacionados à conexão com o banco de dados.  
+
+📁 middlewares  
+   └── Contém a lógica para interceptar requisições para a autenticação de administrador (authAdmin.js).  
 
 ## 📌 Modelos de Dados (Entidades)
  
@@ -50,18 +72,19 @@ A API gerencia dados de adoção, utilizando os seguintes modelos, todos configu
 | **Tutor (ou Usuário)** | Representa o usuário do sistema. Contém dados pessoais, como `nome_completo`, `email` (único), `senha` (criptografada), `cidade`, `estado`, `idade`, `telefone`, `cpf` (único opcional), e a flag `administrador` (booleano, padrão `false`). | Um Tutor tem um Questionário. Um Tutor pode ter vários Pedidos de Adoção. |
 | **Questionario** | Contém respostas detalhadas sobre a aptidão do tutor para adotar. Inclui perguntas sobre residência, número de pessoas na casa, gastos, manejo de animais anteriores, e concordância com esterilização e visitas pós-adoção. | Associado a um Tutor. |
 | **Animal** | Contém informações sobre o animal disponível para adoção (nome, espécie, porte, status, etc.). | Um Animal pode ter vários Pedidos de Adoção. |
-| **PedidoAdocao** | Tabela de junção entre `Tutor` e `Animal`, representa o pedido em si. | Contém campos `tutorId`, `animalId`, `status` (padrão 'em\_analise') e `posicao_fila`. |
+| **PedidoAdocao** | Tabela de junção entre `Tutor` e `Animal`, representa o pedido em si. | Contém campos `usuarioId`, `animalId`, `status` (padrão 'em\_analise') e `posicao_fila`. |
 | **Doacao** | Usado para registrar doações recebidas. | |
 
-## 📌 Autenticação e Autorização
+
+
+## ✅ Autenticação e Autorização
  
 ### Login
  
 O login é realizado através da rota de autenticação, validando email e senha:
  
-*   O sistema deve utilizar criptografia para salvar as senhas, sendo mencionada a biblioteca `encryptjs`.
-*   O endpoint de login busca o usuário pelo email, descriptografa a senha armazenada (usando `encryptjs` e uma chave secreta) e, se as credenciais estiverem corretas, gera um **JSON Web Token (JWT)**.
-*   Alternativamente, há implementações que utilizam `bcrypt` para comparação de senhas.
+*   O sistema deve utilizar criptografia para salvar as senhas, sendo mencionada a biblioteca `bcrypt`.
+*   O endpoint de login busca o usuário pelo email, compara a senha enviada com a a senha armazenada (usando `bcrypt` e uma chave secreta) e, se as credenciais estiverem corretas, gera um **JSON Web Token (JWT)**.
  
 ### Acesso Administrativo
  
@@ -71,7 +94,7 @@ As rotas administrativas são protegidas por autorização.
 *   Ele verifica o token JWT fornecido no cabeçalho `Authorization`.
 *   Se o token for válido, o sistema busca o usuário e verifica se o campo `administrador` é `true`. Caso contrário, retorna erro `403 Forbidden`.
 
-## 📌 Endpoints:
+## 🌐 Endpoints:
 
 A API suporta operações CRUD (Create, Read, Update, Delete) em suas entidades principais, além de rotas de autenticação e doação.
  
@@ -79,11 +102,11 @@ A API suporta operações CRUD (Create, Read, Update, Delete) em suas entidades 
  
 | Método | Rota | Descrição | Status de Sucesso | Status de Erro Comuns |
 | :--- | :--- | :--- | :--- | :--- |
-| **POST** | `/usuario` (ou `/tutores`) | Cadastra um novo tutor. O questionário pode ser enviado junto. | 201 Created | 400 Bad Request (dados ausentes, email já existe), 500 Internal Server Error |
+| **POST** |  `/tutores` | Cadastra um novo tutor. O questionário pode ser enviado junto. | 201 Created | 400 Bad Request (dados ausentes, email já existe), 500 Internal Server Error |
 | **POST** | `/questionario` | Cadastra ou preenche o questionário. Exige que o usuário já exista. | 201 Created | 400 Bad Request (dados ausentes/incompletos) |
 | **PATCH** | `/tutores/:id` | Permite ao tutor atualizar seus dados e/ou completar o questionário. | 200 OK | 400 Bad Request (nenhum campo enviado), 404 Not Found (Tutor) |
 | **GET** | `/tutores/:id` | Retorna os dados e o questionário preenchido de um tutor. | 200 OK | 404 Not Found (Tutor) |
-| **POST** | `/autenticacao` ou `/login` | Realiza a validação de email e senha (Login). | 200 OK | 401 Unauthorized (credenciais inválidas), 500 Internal Server Error |
+| **POST** | `/autenticacao` (ou `/autenticacaoAdmin` se o login for se um administrador ) | Realiza a validação de email e senha (Login). | 200 OK | 401 Unauthorized (credenciais inválidas), 500 Internal Server Error |
  
 ### Rotas de Animais e Adoção
  
@@ -110,7 +133,7 @@ Esses endpoints exigem que o usuário seja um administrador.
 | :--- | :--- | :--- | :--- | :--- |
 | **POST** | `/doacoes` | Registra uma doação recebida (nome, valor e data). | 201 Created | 400 Bad Request (valor ausente/inválido), 500 Internal Server Error |
 
-## 📌 Códigos de Status HTTP 
+### 📍Códigos de Status HTTP 
  
 A API utiliza códigos de status HTTP para indicar o resultado da requisição:
  
@@ -124,26 +147,3 @@ A API utiliza códigos de status HTTP para indicar o resultado da requisição:
 *   **409 Conflict**: Já existe um recurso ativo que impede a criação (ex: pedido de adoção ativo).
 *   **500 Internal Server Error**: Erro interno inesperado no servidor.
 
-
-import { Sequelize } from 'sequelize';
-import dotenv from 'dotenv';
-
-dotenv.config();
-export const sequelize = new Sequelize({
-  username: 'postgres',
-  password: 'suaSenha!',
-  database: 'postgres',
-  host: 'db.zkkfohoezlmgviosrked.supabase.co',
-  port: 5432,
-  dialect: 'postgres',
-  logging: false
-});
-
-postgresql://postgres:[YOUR-PASSWORD]@db.zkkfohoezlmgviosrked.supabase.co:5432/postgres
-
-// Instalar o pacote pg com npm i pg
-// Criar uma conta no supabase para o grupo
-// Alterar o index.js para o postgres se não estiver utilizando o .env
-// Alterar o Modelos.js para o postgres se não estiver utilizando o .env
-
-Adicionar na tabela de questionários a coluna tutorId
