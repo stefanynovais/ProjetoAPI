@@ -8,9 +8,9 @@ Este projeto tem como objetivo a criação de uma API para um sistema de adoçã
 
 :cherry_blossom: [Julia](https://github.com/juliaaamendes): rotas de doações e adoções, frontend;
 
-:cherry_blossom: [Luana](https://github.com/luanagreys7): rotas admin/animais e slides da apresentação;
+:cherry_blossom: [Luana](https://github.com/luanagreys7): rotas admin/animais, escrita do arquivo README.md e slides da apresentação;
 
-:cherry_blossom: [Maria Júlia](https://github.com/maju2107): rotas de animais;
+:cherry_blossom: [Maria Júlia](https://github.com/maju2107): rotas de animais e comunicação direta com a Venturus para sanar dúvidas e obter apoio;
 
 :cherry_blossom: [Stefany](https://github.com/stefanynovais): rotas de questionário e login, frontend;
  
