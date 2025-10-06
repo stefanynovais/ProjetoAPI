@@ -23,6 +23,8 @@
 
 :tulip: qrcode
 
+:tulip: cors
+
 
 ## 📌 Tecnologias:
 
