@@ -30,8 +30,10 @@
     <main>
         <section id="animal-list">
             <h2>Animais Disponíveis</h2>
-            <div class="galeria" id="galeria"></div>
-
+            <div class="carrosel-container">
+                <div class="galeria" id="galeria"></div>
+            </div>
+            
             <script>
                 async function carregarAnimais() {
                 const resposta = await fetch('http://localhost:3000/animais');
@@ -58,6 +60,7 @@
                         <p>${animal.descricao}</p>
                     </div>
                     `;
+
 
 
                     galeria.appendChild(div);
