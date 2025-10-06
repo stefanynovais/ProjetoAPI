@@ -1,6 +1,6 @@
 import Animal from '../models/Animal.js';
 
-export async function PostAnimais(req, res) {
+export async function PostAnimal(req, res) {
   try {
     const { nome, especie, porte, castrado, vacinado, descricao, genero } = req.body;
     const file = req.file; // multer coloca o arquivo aqui
@@ -63,7 +63,7 @@ export async function GetAnimais(req,res) {
     }
 }
 
-export const exibirFoto = async (req, res) => {
+export const ExibirFoto = async (req, res) => {
   try {
     const animal = await Animal.findByPk(req.params.id);
 

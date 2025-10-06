@@ -1,6 +1,6 @@
 import Animal from '../models/Animal.js';
 
-export async function listarAnimais(req, res) {
+export async function GetAnimais(req, res) {
   try {
     const filtros = {};
     if (req.query.especie) filtros.especie = req.query.especie;
@@ -14,7 +14,7 @@ export async function listarAnimais(req, res) {
 }
 
 
-export async function atualizarAnimal(req, res) {
+export async function PatchAnimal(req, res) {
   try {
     const { id } = req.params;
     const dados = req.body;
@@ -34,7 +34,7 @@ export async function atualizarAnimal(req, res) {
   }
 }
 
-export async function deletarAnimal(req, res) {
+export async function DeleteAnimal(req, res) {
   try {
     const { id } = req.params;
     const animal = await Animal.findByPk(id);
@@ -49,7 +49,7 @@ export async function deletarAnimal(req, res) {
   }
 }
 
-export async function getAnimalPorID(req, res) {
+export async function GetAnimalPorID(req, res) {
   try {
     const { id } = req.params;
 

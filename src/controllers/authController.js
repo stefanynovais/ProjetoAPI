@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import Usuario from '../models/Usuario.js';
 
-export async function adminLogin(req, res) {
+export async function AdminLogin(req, res) {
   const { email, senha } = req.body;
 
   try {
