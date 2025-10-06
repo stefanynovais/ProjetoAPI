@@ -31,10 +31,10 @@ footer {
 
 
 header {
-    background: #ff91a4;
-    color: white;
-    text-align: center;
-    padding: 1.5rem;
+    background: #6e5c62;
+    color: #e9cf9c;
+    text-align: left;
+    padding: 15px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -87,4 +87,34 @@ footer {
   color: #333;
   font-size: 14px;
   width: 100%;
+}
+
+#logo {
+    margin-left: 25px;
+    height: 40px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 5px 0 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+#loginMessage {
+    color: red;
+    margin-top: 10px;
+}
+
+#login {
+    width: 100%;
+    padding: 0.7rem;
+    background: #3aa394;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
 }

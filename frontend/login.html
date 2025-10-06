@@ -1,11 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" href="./assets/icon.ico" type="image/x-icon">
+        <title>Termo's Pet</title>
+    </head>
+    <body>
+        <header>
+            <img src="./assets/Logo.png" alt="Logo" id="logo" />
+        </header>
+        <main>
+            <section>
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <label for="email"></label>
+                    <input type="text" id="email" name="email" placeholder="email" required />
+                    <br />
+                    <label for="password"></label>
+                    <input type="password" id="password" name="password" placeholder="senha" required />
+                    <br />
+                    <button type="submit" id="login">Login</button>
+                </form>
+                <p id="loginMessage"></p>
+            </section>
+        </main>
+        <script>
+            document.getElementById('loginForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const email = document.getElementById('email').value;
+                const senha = document.getElementById('password').value;
+
+                try {
+                    const response = await fetch('http://localhost:3000/autenticacao', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, senha })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        window.location.href = 'index.html';
+                    } else {
+                        document.getElementById('loginMessage').textContent = data.error || 'Erro ao fazer login';
+                    }
+                } catch (err) {
+                    document.getElementById('loginMessage').textContent = 'Erro de conexão com o servidor';
+                }
+            });
+        </script>
+    </body>
 </html>
