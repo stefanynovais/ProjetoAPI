@@ -67,3 +67,49 @@ document.getElementById("formAdocao").addEventListener("submit", async (e) => {
 
 // Chama a função ao carregar a página para listar os animais automaticamente
 carregarAnimais();
+
+// passo 7: carregar dados do usuário e foto
+async function carregarAsideUsuario() {
+  const token = localStorage.getItem('token');
+  const userId = localStorage.getItem('userId');
+  const avatar = document.getElementById('user-avatar');
+  const nome = document.getElementById('user-name');
+  const email = document.getElementById('user-email');
+
+  if (!token || !userId) return; // sem login, mantem placeholders
+
+  try {
+    // 1) busca dados públicos do usuário
+    const resp = await fetch('http://localhost:3000/usuarios/me', {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    if (!resp.ok) {
+      console.warn('Não foi possível obter usuário logado', resp.status);
+      return;
+    }
+    const usuario = await resp.json();
+    nome.textContent = usuario.nome || 'Usuário';
+    email.textContent = usuario.email || '';
+
+    // 2) busca a foto como blob (permite enviar Authorization)
+    const fotoUrl = usuario.fotoUrl || `/usuarios/${userId}/foto`;
+    const fotoResp = await fetch(fotoUrl, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+
+    if (fotoResp.ok) {
+      const blob = await fotoResp.blob();
+      const objectUrl = URL.createObjectURL(blob);
+      avatar.src = objectUrl;
+      avatar.onload = () => URL.revokeObjectURL(objectUrl); // liberar memória
+    } else {
+      avatar.src = './assets/avatar-placeholder.png';
+    }
+    avatar.alt = `Foto de ${usuario.nome || 'usuário'}`;
+  } catch (err) {
+    console.error('Erro ao carregar usuário', err);
+    avatar.src = './assets/avatar-placeholder.png';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', carregarAsideUsuario);
