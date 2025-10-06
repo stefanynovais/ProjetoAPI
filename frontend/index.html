@@ -17,7 +17,7 @@
         const token = localStorage.getItem('token');
 
         if (!token) {
-        window.location.href = 'login.html'; // redireciona se não estiver logado
+        window.location.href = 'login.html'; //redireciona se não estiver logado
         }
 
         const response = await fetch('http://localhost:3000/rota-protegida', {
@@ -30,7 +30,43 @@
     <main>
         <section id="animal-list">
             <h2>Animais Disponíveis</h2>
-            <div id="animais"></div>
+            <div class="galeria" id="galeria"></div>
+
+            <script>
+                async function carregarAnimais() {
+                const resposta = await fetch('http://localhost:3000/animais');
+                const animais = await resposta.json();
+
+                const galeria = document.getElementById('galeria');
+                galeria.innerHTML = '';
+
+                animais.forEach(animal => {
+                    const div = document.createElement('div');
+                    div.className = 'animal';
+
+                    const genero = Number(animal.genero);
+                    const emojiGenero = genero === 0 ? '♂️' : '♀️';
+                    const textoGenero = genero === 0 ? 'Macho' : 'Fêmea';
+
+                    div.innerHTML = `
+                    <img src="http://localhost:3000/animais/${animal.id}/foto" alt="Foto de ${animal.nome}" />
+                    <div class="animal-info">
+                        <h3>
+                        ${animal.nome}
+                        <span title="${textoGenero}">${emojiGenero}</span>
+                        </h3>
+                        <p>${animal.descricao}</p>
+                    </div>
+                    `;
+
+
+                    galeria.appendChild(div);
+                });
+                }
+
+                carregarAnimais();
+            </script>
+            
         </section>
 
         <section id="adocao-form">

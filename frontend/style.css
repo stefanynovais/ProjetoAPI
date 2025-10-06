@@ -118,3 +118,50 @@ input[type="text"], input[type="password"] {
     cursor: pointer;
     transition: background 0.3s;
 }
+.galeria {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.animal {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 500px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.animal img {
+  width: 150px;
+  height: auto;
+  border-radius: 8px;
+  margin-right: 15px;
+}
+
+.animal-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.animal-info h3 {
+  font-size: 1.2em;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+.animal-info p {
+  margin: 0;
+  font-size: 1em;
+  color: #666;
+}
+
+
+

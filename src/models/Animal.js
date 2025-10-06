@@ -43,7 +43,10 @@ const Animal = sequelize.define('Animal', {
         foto: { 
             type: DataTypes.BLOB('long'),
             allowNull: true
-        }
+        },
+        genero: { 
+            type: DataTypes.BOOLEAN, //0 = macho, 1 = femea
+            allowNull: false}
     }, {
         tableName: 'animais',
         timestamps: true,

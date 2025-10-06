@@ -13,6 +13,7 @@ export async function listarAnimais(req, res) {
   }
 }
 
+
 export async function atualizarAnimal(req, res) {
   try {
     const { id } = req.params;

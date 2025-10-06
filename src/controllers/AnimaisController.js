@@ -33,8 +33,9 @@ export async function PostAnimais(req, res) {
 
 export async function GetAnimais(req,res) {
     try {
-        const animal = await Animal.findAll(); // ainda vou fazer o filtro 
-                                               // data[], ordenar por padrão do mais antigo para o mais recente
+        const animal = await Animal.findAll({
+          attributes:['id', 'nome', 'descricao', 'genero']
+        });
 
        return res.status(200).json(animal);
         
@@ -43,4 +44,20 @@ export async function GetAnimais(req,res) {
         
     }
 }
+
+export const exibirFoto = async (req, res) => {
+  try {
+    const animal = await Animal.findByPk(req.params.id);
+
+    if (!animal || !animal.foto) {
+      return res.status(404).send('Imagem não encontrada');
+    }
+
+    res.set('Content-Type', 'image/png');
+    res.send(animal.foto);
+  } catch (error) {
+    res.status(500).send('Erro ao carregar imagem');
+  }
+};
+
 
