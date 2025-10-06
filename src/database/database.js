@@ -13,6 +13,7 @@ export const connectDatabase = async () => {
  try {
    await sequelize.authenticate(); //verifica se a conexão com o banco está funcionando
     console.log('Conexão com o banco feita com sucesso!');
+    console.log('Conectando ao banco:', sequelize.config.host);
     return sequelize; //retorna a instância para quem chamar
   } catch (error) { //se a conexão falhar, cai aqui e mostra o erro
     console.error('Erro ao conectar com o banco:', error);

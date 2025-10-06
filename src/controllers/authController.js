@@ -1,10 +1,8 @@
 import jwt from 'jsonwebtoken';
-import encrypt from 'encryptjs';
+import bcrypt from 'bcrypt';
 import Usuario from '../models/Usuario.js';
-import { sequelize} from '../database/database.js';
 
-
-export async function login(req, res) {
+export async function adminLogin(req, res) {
   const { email, senha } = req.body;
 
   try {
@@ -14,25 +12,34 @@ export async function login(req, res) {
       return res.status(404).json({ erro: 'Usuário não encontrado' });
     }
 
-    const secretKey = 'sua-chave-secreta'; // a mesma usada no seed
-    const senhaDescriptografada = encrypt.decrypt(usuario.senha, secretKey, 256);
+    // Verifica se é admin
+    if (!usuario.administrador) {
+      return res.status(403).json({ erro: 'Acesso restrito a administradores' });
+    }
 
-    if (senha !== senhaDescriptografada) {
+    const secretKey = 'sua-chave-secreta'; // a mesma usada no seed
+
+    // Compara senha com bcrypt
+    const senhaValida = await bcrypt.compare(senha, usuario.senha);
+    if (!senhaValida) {
       return res.status(401).json({ erro: 'Senha incorreta' });
+    } else {
+      console.log("ok");
     }
 
     const token = jwt.sign(
       {
         id: usuario.id,
         email: usuario.email,
-        role: usuario.role || 'user' // certifique-se que admins tenham 'admin' no banco
+        administrador: usuario.administrador // pega o valor do banco
       },
       secretKey,
       { expiresIn: '2h' }
     );
 
-    res.json({ token });
-  } catch (err) {
-    res.status(500).json({ erro: 'Erro no login' });
+    return res.status(200).json({ token });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro no login'});
   }
 }

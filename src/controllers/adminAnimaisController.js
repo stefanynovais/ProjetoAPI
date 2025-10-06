@@ -1,7 +1,4 @@
 import Animal from '../models/Animal.js';
-import {sequelize} from '../database/database.js';
-
-
 
 export async function listarAnimais(req, res) {
   try {
@@ -44,8 +41,9 @@ export async function deletarAnimal(req, res) {
     if (!animal) return res.status(404).json({ erro: 'Animal não encontrado' });
 
     await animal.destroy();
-    res.status(204).send();
+    return res.status(204).send();
   } catch (err) {
+    console.error(err);
     res.status(500).json({ erro: 'Erro ao remover animal' });
   }
 }
@@ -58,7 +56,7 @@ export async function getAnimalPorID(req, res) {
 
     const animal = await Animal.findByPk(id);
 
-      res.status(200).json(animal)
+    return res.status(200).json({ mensagem: "Animal encontrado", animal });
 
   } catch (error) {
     res.status(404).json({erro: "Animal não encontrado"});
