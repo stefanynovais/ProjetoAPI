@@ -1,14 +1,14 @@
 import express from "express";
 import {
-    criarTutor,
-    buscarTutor,
-    atualizarTutor
+    PostTutor,
+    GetTutor,
+    PatchTutor
 } from "../../controllers/tutorController.js";
 
 const router = express.Router();
 
-router.post("/tutores", criarTutor);
-router.get("/tutores/:id", buscarTutor);
-router.patch("/tutores/:id", atualizarTutor);
+router.post("/tutores", PostTutor);
+router.get("/tutores/:id", GetTutor);
+router.patch("/tutores/:id", PatchTutor);
 
 export default router;

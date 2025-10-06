@@ -15,7 +15,8 @@ const inserirAnimais = async () => {
     vacinado: true,
     adotado: false,
     descricao: 'Cachorro ativo e protetor, adora passeios longos.',
-    foto: imagemBuffer
+    foto: imagemBuffer,
+    genero: 1,
   });
 
   console.log('Animal inserido com sucesso!');
