@@ -74,6 +74,10 @@ import {sequelize} from '../database/database.js';
             type: DataTypes.BOOLEAN,
             allowNull: false,
             defaultValue: false
+        },
+        foto:{
+            type: DataTypes.BLOB('long'),
+            allowNull: true
         }
     }, {
         tableName: 'usuarios', //força o nome da tabela para "Usuario" no banco de dados

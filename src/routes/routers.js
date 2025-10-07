@@ -29,5 +29,8 @@ const router = express.Router();
 
     //Rota Tutor
     router.use(tutorRoutes);
+
+    // Rotas usuário
+    router.use(routerUsuario);
     
 export default router;

@@ -1,19 +1,22 @@
 # **🐾 : Sistema de Adoção - API REST com Node.js : 🐾**
-## 👧🏻 Integrantes: 
-:cherry_blossom: Ana Júlia
 
-:cherry_blossom: Júlia
+## 🎯 Funcionamento e objetivos:
+Este projeto tem como objetivo a criação de uma API para um sistema de adoção de animais, atendendo aos requisitos de funcionalidades e endpoints impostos pela Venturs, bem como um frontend personalizado, que combina com a proposta do grupo.
 
-:cherry_blossom: Luana
+## ✨ Integrantes e contribuição: 
+:cherry_blossom: [Ana Júlia](https://github.com/anajuca): rotas do tutor, coodernação e roteirização da apresentação, escrita e personalização do arquivo README.md;
 
-:cherry_blossom: Maria Júlia
+:cherry_blossom: [Julia](https://github.com/juliaaamendes): rotas de doações e adoções, frontend;
 
-:cherry_blossom: Stefany 
+:cherry_blossom: [Luana](https://github.com/luanagreys7): rotas admin/animais, escrita do arquivo README.md e slides da apresentação;
+
+:cherry_blossom: [Maria Júlia](https://github.com/maju2107): rotas de animais e comunicação direta com a Venturus para sanar dúvidas e obter apoio;
+
+:cherry_blossom: [Stefany](https://github.com/stefanynovais): rotas de questionário e login, frontend;
  
 ### 🐈‍⬛ Turma: :octocat: 2DS MTEC
 
 ## ⚙️ Dependências:
-:tulip: npm 
 
 :tulip: jsonwebtoken
 
