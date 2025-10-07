@@ -4,7 +4,7 @@
 Este projeto tem como objetivo a criação de uma API para um sistema de adoção de animais, atendendo aos requisitos de funcionalidades e endpoints impostos pela Venturs, bem como um frontend personalizado, que combina com a proposta do grupo.
 
 ## ✨ Integrantes e contribuição: 
-:cherry_blossom: [Ana Júlia](https://github.com/anajuca): rotas do tutor, coodernação e roteirização da apresentação, escrita e personalização do arquivo README.md;
+:cherry_blossom: [Ana Júlia](https://github.com/anajuca): rotas do tutor, coodernação e roteirização da apresentação, escrita e personalização do arquivo README.md e slides da apresentação;
 
 :cherry_blossom: [Julia](https://github.com/juliaaamendes): rotas de doações e adoções, frontend;
 
