@@ -6,6 +6,7 @@ import routerAdocao from '../routes/adocao/adocaoRoutes.js';
 import routerQuestionario from '../routes/tutor/questionario.js';
 import routerDoacao from '../routes/doacao/doacao.js';
 import tutorRoutes from '../routes/tutor/tutor.js';
+import routerUsuario from '../routes/usuario/usuarios.js';
 
 const router = express.Router();
 
