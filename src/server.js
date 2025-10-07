@@ -5,7 +5,6 @@ import router from './routes/routers.js';
 // import { initModels } from './models/Modelos.js';
 
 
-
 const app = express(); //criando a aplicação do nosso app
 const port = 3000; //porta em que o servidor vai rodar
 
