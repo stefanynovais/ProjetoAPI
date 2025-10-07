@@ -3,7 +3,7 @@ import Questionario from "../models/Questionario.js";
 
 const camposObrigatorios = [
     'nome_completo', 'email', 'senha', 'cidade',
-    'estado', 'idade', 'cpf', 'endereco', 'bairro', 'cep', 'telefone'
+    'estado', 'idade', 'cpf', 'endereco', 'bairro', 'cep', 'telefone', 'foto'
 ];
 
 export const PostTutor = async (req, res) => {
