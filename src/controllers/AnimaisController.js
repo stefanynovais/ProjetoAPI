@@ -54,7 +54,7 @@ export async function GetAnimais(req,res) {
 
         const animal = await Animal.findAll({
           where: filtro,
-          attributes: { exclude: ['foto'] }, // não retorna o campo foto pq é  muito grande
+          attributes: { exclude: ['foto'] },  
           order: [['createdAt', 'ASC']] 
         }); 
 

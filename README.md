@@ -1,4 +1,4 @@
-# **🐾 : Sistema de Adoção - API REST com Node.js : 🐾**
+# *🐾 : Sistema de Adoção - API REST com Node.js : 🐾*
 
 ## 🎯 Funcionamento e objetivos:
 Este projeto tem como objetivo a criação de uma API para um sistema de adoção de animais, atendendo aos requisitos de funcionalidades e endpoints impostos pela Venturs, bem como um frontend personalizado, que combina com a proposta do grupo.
